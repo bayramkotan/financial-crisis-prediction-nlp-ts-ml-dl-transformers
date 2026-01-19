@@ -19,11 +19,44 @@ This repository contains the complete codebase for a comprehensive study on fina
 
 ## Key Findings
 
-| Category | Best Model | RMSE | Period |
-|----------|-----------|------|--------|
-| Single Stock (250 samples) | Autoformer | 8.54 | 21-day |
-| Multi-Stock (12,500 samples) | CNN | 0.75 | 21-day |
-| NLP-Inflation Correlation | Word2Vec | r=0.87 | 3-month lag |
+### Single Stock Analysis (250 samples, 21-day forecast)
+
+| Metric | Best Model | Value | Category |
+|--------|-----------|-------|----------|
+| **R²** | Autoformer | **0.53** | Transformer |
+| **RMSE** | Autoformer | **8.54** | Transformer |
+| **MAPE** | Autoformer | **0.77%** | Transformer |
+
+**Top 3 Models by R²:**
+| Rank | Model | R² | RMSE | MAPE |
+|------|-------|-----|------|------|
+| 1 | Autoformer | 0.53 | 8.54 | 0.77% |
+| 2 | Linear Regression | 0.43 | 9.36 | 0.85% |
+| 3 | RNN | 0.38 | 9.77 | 0.83% |
+
+### Multi-Stock Analysis (12,500 samples, 21-day forecast)
+
+> ⚠️ **Note:** Negative R² values indicate that per-stock Min-Max normalization affected model generalization across different volatility regimes. MAPE is used as the primary metric for scale-independent comparison.
+
+| Metric | Best Model | Value | Category |
+|--------|-----------|-------|----------|
+| **MAPE** | FEDformer | **3.83%** | Transformer |
+| **RMSE** | FEDformer | **0.29** | Transformer |
+
+**Top 3 Models by MAPE:**
+| Rank | Model | MAPE | RMSE | R² |
+|------|-------|------|------|-----|
+| 1 | FEDformer | 3.83% | 0.29 | -1.61 |
+| 2 | TSMixer | 3.86% | 0.30 | -1.62 |
+| 3 | Informer | 4.35% | 0.35 | -2.35 |
+
+### NLP Analysis (Crisis Early Warning)
+
+| Model | Correlation (r) | Lag | p-value | Significant |
+|-------|-----------------|-----|---------|-------------|
+| Word2Vec | **0.87** | 3 months | 0.002 | ✓ |
+| GloVe | 0.80 | 2 months | 0.005 | ✓ |
+| ALBERT | 0.81 | 3 months | 0.009 | ✓ |
 
 ## Repository Structure
 
