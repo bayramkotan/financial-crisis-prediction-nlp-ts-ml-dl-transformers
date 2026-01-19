@@ -27,28 +27,35 @@ This repository contains the complete codebase for a comprehensive study on fina
 | **RMSE** | Autoformer | **8.54** | Transformer |
 | **MAPE** | Autoformer | **0.77%** | Transformer |
 
-**Top 3 Models by R²:**
-| Rank | Model | R² | RMSE | MAPE |
-|------|-------|-----|------|------|
-| 1 | Autoformer | 0.53 | 8.54 | 0.77% |
-| 2 | Linear Regression | 0.43 | 9.36 | 0.85% |
-| 3 | RNN | 0.38 | 9.77 | 0.83% |
+**Top 5 Models by R²:**
+| Rank | Model | R² | RMSE | MAPE | Category |
+|------|-------|-----|------|------|----------|
+| 1 | Autoformer | 0.53 | 8.54 | 0.77% | Transformer |
+| 2 | Linear Regression | 0.43 | 9.36 | 0.85% | Time Series/ML |
+| 3 | RNN | 0.38 | 9.77 | 0.83% | Deep Learning |
+| 4 | DeepAR | -0.07 | 12.83 | 1.18% | Transformer |
+| 5 | Ensemble (6 LLM) | -21.13 | 58.35 | 5.28% | Financial LLM |
+
+> ⚠️ **Note:** Financial LLM ensemble (FinBERT, FinGPT, FinT5, StockGPT, MarketGPT, BloombergGPT) performed poorly on single stock due to limited training data (250 samples).
 
 ### Multi-Stock Analysis (12,500 samples, 21-day forecast)
 
-> ⚠️ **Note:** Negative R² values indicate that per-stock Min-Max normalization affected model generalization across different volatility regimes. MAPE is used as the primary metric for scale-independent comparison.
-
 | Metric | Best Model | Value | Category |
 |--------|-----------|-------|----------|
-| **MAPE** | FEDformer | **3.83%** | Transformer |
-| **RMSE** | FEDformer | **0.29** | Transformer |
+| **MAPE** | Ensemble (FinGPT+Tech+Sent) | **1.84%** | Financial LLM |
+| **R²** | Ensemble (FinGPT+Tech+Sent) | **0.21** | Financial LLM |
+| **RMSE** | Ensemble (FinGPT+Tech+Sent) | **0.22** | Financial LLM |
 
-**Top 3 Models by MAPE:**
-| Rank | Model | MAPE | RMSE | R² |
-|------|-------|------|------|-----|
-| 1 | FEDformer | 3.83% | 0.29 | -1.61 |
-| 2 | TSMixer | 3.86% | 0.30 | -1.62 |
-| 3 | Informer | 4.35% | 0.35 | -2.35 |
+**Top 5 Models by MAPE:**
+| Rank | Model | MAPE | RMSE | R² | Category |
+|------|-------|------|------|-----|----------|
+| 1 | **Ensemble (FinGPT+Tech+Sent)** | **1.84%** | 0.22 | **0.21** | Financial LLM |
+| 2 | FinGPT (Multi-Stock) | 3.04% | 0.33 | -0.72 | Financial LLM |
+| 3 | FEDformer | 3.83% | 0.29 | -1.61 | Transformer |
+| 4 | TSMixer | 3.86% | 0.30 | -1.62 | Transformer |
+| 5 | Informer | 4.35% | 0.35 | -2.35 | Transformer |
+
+> ✅ **Key Finding:** Financial LLM ensemble achieved the **only positive R² (0.21)** in multi-stock analysis, demonstrating the value of combining sentiment features with technical indicators when sufficient data is available.
 
 ### NLP Analysis (Crisis Early Warning)
 
@@ -57,6 +64,8 @@ This repository contains the complete codebase for a comprehensive study on fina
 | Word2Vec | **0.87** | 3 months | 0.002 | ✓ |
 | GloVe | 0.80 | 2 months | 0.005 | ✓ |
 | ALBERT | 0.81 | 3 months | 0.009 | ✓ |
+
+> 💡 **Insight:** Classical word embeddings (Word2Vec, GloVe) outperformed transformer models (BERT, RoBERTa) for crisis prediction correlation, suggesting simpler models may better capture economic sentiment patterns.
 
 ## Repository Structure
 
