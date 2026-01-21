@@ -16,7 +16,7 @@ This repository contains the complete codebase for a comprehensive study on fina
 - **Machine Learning** algorithms (Linear Regression, SVM, Random Forest, KNN, Decision Tree)
 - **Deep Learning** architectures (LSTM, RNN, CNN, MLP) with Dropout regularization
 - **Transformer-based** models (Informer, Autoformer, TimesNet, TFT, FEDformer, TSMixer, DeepAR)
-- **Financial LLMs** (FinBERT, FinGPT, FinT5)
+- **Financial LLMs** (FinBERT, FinGPT, FinT5, StockGPT, MarketGPT, BloombergGPT)
 
 ## Key Findings
 
@@ -28,72 +28,114 @@ This repository contains the complete codebase for a comprehensive study on fina
 |------|-------|------|-----|------|----------|
 | 1 | **Autoformer** | **8.54** | **0.53** | **0.77%** | Transformer |
 | 2 | Linear Regression | 9.36 | 0.43 | 0.85% | ML |
-| 3 | RNN (Dropout 0.2) | 13.54 | -0.19 | 1.23% | Deep Learning |
-| 4 | LSTM (Dropout 0.2) | 20.25 | -1.66 | 1.83% | Deep Learning |
-| 5 | CNN (Dropout 0.2) | 21.06 | -1.88 | 1.90% | Deep Learning |
+| 3 | Informer | 12.12 | 0.15 | 1.11% | Transformer |
+| 4 | DeepAR | 12.83 | -0.07 | 1.18% | Transformer |
+| 5 | SARIMA | 13.35 | - | 1.21% | Time Series |
+| 6 | RNN (Dropout 0.2) | 13.54 | -0.19 | 1.23% | Deep Learning |
+| 7 | LSTM (Dropout 0.2) | 20.25 | -1.67 | 1.83% | Deep Learning |
+| 8 | CNN (Dropout 0.2) | 21.06 | -1.88 | 1.90% | Deep Learning |
+| 9 | MLP (Dropout 0.2) | 46.07 | -12.80 | 4.18% | Deep Learning |
+| 10 | TFT | 48.44 | -14.25 | 5.30% | Transformer |
 
 #### 95% Confidence Intervals (21-Day, Single Stock)
 
-| Model | RMSE | Std | 95% CI Lower | 95% CI Upper |
-|-------|------|-----|--------------|--------------|
-| RNN | 13.54 | 2.85 | 7.95 | 19.13 |
-| LSTM | 20.25 | 4.12 | 12.17 | 28.33 |
-| CNN | 21.06 | 3.98 | 13.26 | 28.86 |
-| MLP | 46.07 | 8.54 | 29.33 | 62.81 |
+| Category | Model | RMSE | Std | 95% CI |
+|----------|-------|------|-----|--------|
+| Deep Learning | RNN | 13.54 | 4.06 | [5.58, 21.50] |
+| Deep Learning | LSTM | 20.25 | 6.08 | [8.34, 32.16] |
+| Deep Learning | CNN | 21.06 | 6.32 | [8.68, 33.44] |
+| Deep Learning | MLP | 46.07 | 13.82 | [18.98, 73.16] |
+| Transformer | Autoformer | 8.54 | 2.99 | [2.68, 14.40] |
+| Transformer | Informer | 12.12 | 4.24 | [3.81, 20.43] |
+| Transformer | DeepAR | 12.83 | 4.49 | [4.03, 21.63] |
+| Transformer | TimesNet | 19.49 | 6.82 | [6.12, 32.86] |
+| Transformer | TSMixer | 19.38 | 6.78 | [6.09, 32.67] |
+| Transformer | TFT | 48.44 | 16.95 | [15.21, 81.67] |
+| Time Series | Linear Reg. | 9.36 | 2.34 | [4.77, 13.95] |
+| Time Series | SARIMA | 13.35 | 3.34 | [6.81, 19.89] |
 
 ### Multi-Stock Analysis (12,500 samples, 50 BIST50 stocks)
 
 #### 21-Day Forecast Results
 
-| Rank | Model | RMSE | R² | MAPE | Category |
-|------|-------|------|-----|------|----------|
-| 1 | **RNN** | **0.76** | **0.85** | **2.1%** | Deep Learning |
-| 2 | LSTM | 1.18 | 0.72 | 3.2% | Deep Learning |
-| 3 | CNN | 1.26 | 0.68 | 3.5% | Deep Learning |
-| 4 | FinLLM Ensemble | 0.22 | 0.21 | 1.84% | Financial LLM |
+| Rank | Model | RMSE | R² | Category |
+|------|-------|------|-----|----------|
+| 1 | **CNN** | **0.75** | -0.15 | Deep Learning |
+| 2 | Linear Regression | 0.77 | - | ML |
+| 3 | RNN | 0.80 | -0.16 | Deep Learning |
+| 4 | LSTM | 0.81 | -0.16 | Deep Learning |
+| 5 | MLP | 0.85 | -0.17 | Deep Learning |
+
+> ⚠️ **Note:** Negative R² values in multi-stock analysis indicate that models struggle to explain stock-specific variance, though RMSE values are low due to scale differences (index ~1000 points vs individual stock prices ~10-100 TL).
 
 #### 95% Confidence Intervals (21-Day, Multi-Stock)
 
-| Model | RMSE | Std | 95% CI Lower | 95% CI Upper |
-|-------|------|-----|--------------|--------------|
-| RNN | 0.76 | 0.15 | 0.47 | 1.05 |
-| LSTM | 1.18 | 0.24 | 0.71 | 1.65 |
-| CNN | 1.26 | 0.22 | 0.83 | 1.69 |
-| MLP | 2.41 | 0.48 | 1.47 | 3.35 |
+| Model | RMSE | Std | 95% CI |
+|-------|------|-----|--------|
+| CNN | 0.75 | 0.15 | [0.46, 1.04] |
+| RNN | 0.80 | 0.16 | [0.49, 1.11] |
+| LSTM | 0.81 | 0.16 | [0.49, 1.13] |
+| MLP | 0.85 | 0.17 | [0.52, 1.18] |
+| Linear Reg. | 0.77 | 0.12 | [0.54, 1.00] |
 
 #### Data Volume Impact (Single vs Multi-Stock)
 
 | Model | Single Stock RMSE | Multi-Stock RMSE | Improvement |
 |-------|-------------------|------------------|-------------|
-| RNN | 13.54 | 0.76 | **94.4%** |
-| LSTM | 20.25 | 1.18 | **94.2%** |
-| CNN | 21.06 | 1.26 | **94.0%** |
-| MLP | 46.07 | 2.41 | **94.8%** |
+| RNN | 13.54 | 0.80 | **94.1%** |
+| LSTM | 20.25 | 0.81 | **96.0%** |
+| CNN | 21.06 | 0.75 | **96.4%** |
+| MLP | 46.07 | 0.85 | **98.2%** |
 
-> ✅ **Key Finding:** Increasing data from 250 to 12,500 samples resulted in ~94-98% RMSE improvement across all deep learning models.
+> ⚠️ **Important:** This RMSE reduction is due to two factors: (1) Scale difference - single stock analysis predicts BIST50 index (~1000 points) while multi-stock predicts individual prices (~10-100 TL); (2) Data volume increase - from 250 to 12,500 samples improves pattern learning capacity.
 
 ### Dropout Regularization Impact (Single Stock, 21-Day)
 
 | Model | Without Dropout | With Dropout (0.2) | Change |
 |-------|-----------------|-------------------|--------|
-| LSTM | 24.18 | 20.25 | -16.3% ✓ |
-| RNN | 14.21 | 13.54 | -4.7% ✓ |
-| CNN | 19.87 | 21.06 | +6.0% |
-| MLP | 48.92 | 46.07 | -5.8% ✓ |
+| LSTM | 21.53 | 20.25 | -5.9% ✓ |
+| RNN | 13.40 | 13.54 | +1.0% |
+| CNN | 15.99 | 21.06 | +31.7% |
+| MLP | 15.76 | 46.07 | +192.3% |
+
+> 💡 **Insight:** Dropout (0.2) improved LSTM performance but was too aggressive for CNN and MLP with limited data (250 samples). Dropout rate should be tuned based on model architecture and data size.
 
 ### NLP Analysis (Crisis Correlation with Inflation)
 
-| Model | Correlation (r) | Optimal Lag | p-value | Early Warning |
-|-------|-----------------|-------------|---------|---------------|
-| **Word2Vec** | **0.87** | 3 months | 0.002 | ✓ |
-| GloVe | 0.80 | 2 months | 0.005 | ✓ |
-| ALBERT | 0.85 | 3 months | 0.004 | ✓ |
-| BERT | 0.81 | 3 months | 0.009 | ✓ |
-| RoBERTa | 0.78 | 2 months | 0.012 | ✓ |
-| USE | 0.72 | 1 month | 0.021 | ✓ |
-| FastText | 0.75 | 2 months | 0.015 | ✓ |
+| Model | Lag (Month) | Correlation (r) | p-value | Interpretation |
+|-------|-------------|-----------------|---------|----------------|
+| **Word2Vec** | 3 | **0.8715** | 0.0022 | Strongest leading indicator |
+| ALBERT | 3 | 0.8058 | 0.0087 | Medium correlation |
+| GloVe | 2 | 0.8025 | 0.0052 | Significant correlation |
+| FastText | 1 | 0.6800 | 0.0834 | Statistically insignificant |
 
 > 💡 **Insight:** Word2Vec achieved the highest correlation (r=0.87) with 3-month lead time, providing effective early warning capability for the 2018 Turkish currency crisis.
+
+### NLP Semantic Similarity Scores
+
+| Model | Text Type | Economic Crisis | Market Stability | Financial Growth |
+|-------|-----------|-----------------|------------------|------------------|
+| ALBERT | lemmatized | 0.62 | 0.66 | **0.67** |
+| ALBERT | english | 0.60 | 0.63 | 0.63 |
+| FastText | english | 0.61 | 0.53 | 0.62 |
+| BERT | lemmatized | 0.42 | 0.28 | 0.43 |
+| RoBERTa | stemmed | 0.45 | 0.41 | 0.46 |
+| GloVe | english | 0.49 | 0.51 | 0.53 |
+| Word2Vec | lemmatized | 0.31 | 0.33 | 0.33 |
+| USE | lemmatized | 0.10 | 0.07 | 0.08 |
+
+> 💡 **Note:** ALBERT produced highest similarity scores (0.61-0.67), while Word2Vec showed highest inflation correlation (r=0.87). These metrics measure different characteristics: similarity score measures semantic closeness, correlation measures temporal economic dynamics.
+
+### Transformer Model Performance (Single Stock, 21-Day)
+
+| Model | RMSE | Relative RMSE | MAE | MAPE(%) | R² | Directional Accuracy (%) |
+|-------|------|---------------|-----|---------|-----|--------------------------|
+| Autoformer | 8.54 | 0.0303 | 6.89 | 0.77 | 0.53 | 60.00 |
+| Informer | 12.12 | 0.0212 | 9.81 | 1.11 | 0.15 | 43.33 |
+| DeepAR | 12.83 | 0.0390 | 10.48 | 1.18 | -0.07 | 53.33 |
+| TSMixer | 19.38 | 0.0167 | 16.48 | 1.87 | -1.44 | 63.33 |
+| TimesNet | 19.49 | 0.0387 | 16.00 | 1.81 | -1.47 | 33.33 |
+| TFT | 48.44 | 0.0189 | 47.01 | 5.30 | -14.25 | 36.67 |
 
 ### Financial LLM Fine-tuning Details
 
@@ -108,14 +150,28 @@ This repository contains the complete codebase for a comprehensive study on fina
 
 ### Transformer Model Technical Specifications
 
-| Model | Attention Type | Complexity | Key Feature |
-|-------|---------------|------------|-------------|
-| Informer | ProbSparse | O(L log L) | Long sequence efficiency |
-| Autoformer | Auto-Correlation | O(L log L) | Decomposition + correlation |
-| FEDformer | Frequency Enhanced | O(L) | Fourier/Wavelet transform |
-| TimesNet | 2D Variation | O(L log L) | Temporal 2D modeling |
-| TFT | Multi-head | O(L²) | Interpretable attention |
-| TSMixer | MLP-based | O(L) | All-MLP architecture |
+| Model | Source | Attention Type | Complexity | Key Feature |
+|-------|--------|---------------|------------|-------------|
+| Informer | Zhou et al. (2021) | ProbSparse | O(L log L) | Long sequence efficiency |
+| Autoformer | Wu et al. (2021) | Auto-Correlation | O(L log L) | Decomposition + correlation |
+| FEDformer | Zhou et al. (2022) | Frequency Enhanced | O(L) | Fourier/Wavelet transform |
+| TimesNet | Wu et al. (2023) | 2D Variation | O(L log L) | Temporal 2D modeling |
+| TFT | Lim et al. (2021) | Multi-horizon | O(L²) | Interpretable attention |
+| TSMixer | Chen et al. (2023) | MLP Mixing | O(L) | All-MLP architecture |
+| DeepAR | Salinas et al. (2020) | Autoregressive RNN | O(L) | Probabilistic forecasting |
+| Chronos | Amazon (2024) | Pre-trained | O(L) | Probabilistic forecasting |
+
+### Best Models by Forecast Period (RMSE)
+
+| Category | Best Model | 1 Day | 10 Day | 21 Day |
+|----------|------------|-------|--------|--------|
+| Time Series (Single) | AR Differencing | 0.84 | 6.00 | 13.35 |
+| ML (Single) | Linear Regression | 0.64 | 7.69 | 9.36 |
+| Deep Learning (Single) | RNN | 4.19 | 13.54 | 13.54 |
+| Transformer (Single) | Informer | 12.12 | 12.12 | 12.12 |
+| ML (Multi) | Linear Regression | 0.33 | 0.56 | 0.77 |
+| Deep Learning (Multi) | LSTM | 0.81 | 0.81 | 0.81 |
+| Transformer (Multi) | TSMixer | 0.29 | 0.29 | 0.29 |
 
 ## Repository Structure
 
@@ -234,18 +290,19 @@ normalized = scaler.fit_transform(bist50[['Close']])
 ### Data Preprocessing
 1. Missing value imputation (Gradient Boosting for row-based)
 2. Min-Max normalization to [0,1] range
-3. Sliding window transformation (time_step=5)
-4. Train/Test split: 80%/20%
+3. Sliding window transformation (time_step=30)
+4. Train/Test split: Training (Jan 1 - Nov 30, 2018), Test (Dec 1-31, 2018)
 
 ### Feature Engineering
 - First-order differencing
 - Log transformation
-- Moving averages
+- Moving averages (3-day)
 - Exponential smoothing
 
 ### Cross-Validation
-- TimeSeriesSplit (5 folds)
+- TimeSeriesSplit (10 folds)
 - Walk-forward validation for temporal data
+- Temporal leakage prevention
 
 ### Evaluation Metrics
 - **RMSE** (Root Mean Squared Error) - Primary metric
@@ -263,6 +320,9 @@ normalized = scaler.fit_transform(bist50[['Close']])
 | Python | 3.10+ |
 | TensorFlow | 2.15+ |
 | PyTorch | 2.0+ |
+| NeuralForecast | For Transformer time series models |
+| Hugging Face | For NLP models |
+| scikit-learn | For ML models |
 
 ## Citation
 
@@ -306,6 +366,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - **Advisor:** Assoc. Prof. Dr. Serdar Kırışoğlu
+- **Committee Members:** Prof. Dr. Pakize Erdoğmuş, Prof. Dr. Devrim Akgün
 - Duzce University, Graduate School of Natural and Applied Sciences
 - Google Colab for computational resources
 
