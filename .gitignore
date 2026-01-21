@@ -3,44 +3,137 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
+# C extensions
+*.so
 
-# Data files (too large for GitHub)
-data/raw/
-data/processed/
-*.csv
-*.xlsx
-*.xls
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Model checkpoints
-*.h5
-*.pkl
-*.joblib
-*.pt
-*.pth
-checkpoints/
+# PyInstaller
+*.manifest
+*.spec
 
-# Environment
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Environments
 .env
 .venv
 env/
 venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
+# Data files (large)
+*.csv
+*.xlsx
+*.xls
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.parquet
+
+# Model files (large)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+models/
+checkpoints/
+
+# Results (optional - uncomment to track)
+# results/
+
 # Logs
-*.log
 logs/
+*.log
+tensorboard/
 
 # Temporary files
+tmp/
+temp/
 *.tmp
-*.temp
+
+# API keys and secrets
+.env
+.env.local
+secrets.json
+config.local.py

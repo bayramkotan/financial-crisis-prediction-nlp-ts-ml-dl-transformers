@@ -1,44 +1,111 @@
 # Financial Crisis Prediction - Requirements
-# Tested on Python 3.8+ with Google Colab (A100 GPU)
+# PhD Thesis: Early Prediction of Crisis Periods Using Economic Text Data and Market Indicators
+# Tested on Python 3.10+ with Google Colab (NVIDIA A100 GPU)
 
-# Core
-numpy>=1.21.0
-pandas>=1.3.0
-scipy>=1.7.0
+# ============================================
+# Core Scientific Computing
+# ============================================
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
 
+# ============================================
 # Visualization
-matplotlib>=3.4.0
-seaborn>=0.11.0
-plotly>=5.0.0
+# ============================================
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0
 
+# ============================================
 # Machine Learning
-scikit-learn>=1.0.0
+# ============================================
+scikit-learn>=1.3.0
 
-# Deep Learning
-tensorflow>=2.10.0
-keras>=2.10.0
+# ============================================
+# Deep Learning - TensorFlow
+# ============================================
+tensorflow>=2.15.0
+keras>=3.0.0
 
-# Time Series
-statsmodels>=0.13.0
-pmdarima>=2.0.0
+# ============================================
+# Deep Learning - PyTorch
+# ============================================
+torch>=2.0.0
+torchvision>=0.15.0
 
-# NLP
-transformers>=4.20.0
-sentence-transformers>=2.2.0
-torch>=1.12.0
-gensim>=4.2.0
-nltk>=3.7
+# ============================================
+# Time Series Analysis
+# ============================================
+statsmodels>=0.14.0
+pmdarima>=2.0.3
 
+# ============================================
+# NLP - Transformers & Embeddings
+# ============================================
+transformers>=4.35.0
+sentence-transformers>=2.2.2
+tokenizers>=0.15.0
+
+# Word Embeddings
+gensim>=4.3.0
+nltk>=3.8.0
+
+# ============================================
 # Transformer Time Series Models
-neuralforecast>=1.6.0
+# ============================================
+neuralforecast>=1.7.0
+pytorch-forecasting>=1.0.0
+darts>=0.27.0
 
+# ============================================
+# Financial LLMs
+# ============================================
+peft>=0.7.0  # LoRA fine-tuning
+bitsandbytes>=0.41.0  # Quantization
+accelerate>=0.25.0  # Distributed training
+
+# ============================================
 # Financial Data
-yfinance>=0.2.0
+# ============================================
+yfinance>=0.2.33
+pandas-datareader>=0.10.0
 
-# Utilities
-tqdm>=4.64.0
-openpyxl>=3.0.0
-requests>=2.28.0
-
-# Google Translate (for NLP preprocessing)
+# ============================================
+# NLP Preprocessing
+# ============================================
 googletrans==4.0.0-rc1
+langdetect>=1.0.9
+textblob>=0.17.1
+
+# ============================================
+# Utilities
+# ============================================
+tqdm>=4.66.0
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+requests>=2.31.0
+python-dateutil>=2.8.2
+
+# ============================================
+# Jupyter & Development
+# ============================================
+jupyter>=1.0.0
+ipywidgets>=8.1.0
+nbformat>=5.9.0
+
+# ============================================
+# Model Evaluation & Metrics
+# ============================================
+tensorboard>=2.15.0
+mlflow>=2.9.0  # Optional: experiment tracking
+
+# ============================================
+# Bloomberg API (Optional - requires license)
+# ============================================
+# blpapi>=3.19.0  # Uncomment if Bloomberg Terminal available
+
+# ============================================
+# Google News API
+# ============================================
+gnews>=0.3.0
+feedparser>=6.0.0

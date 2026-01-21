@@ -2,129 +2,178 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)](https://tensorflow.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **PhD Thesis Research** - Comparative Analysis of Time Series Methods, Customized Transformer Models, and Deep Learning Approaches for Early Prediction of Crisis Periods Using Economic Text Data and Market Indicators
+> **PhD Thesis Research** - Early Prediction of Crisis Periods Using Economic Text Data and Market Indicators: Comparative Application of Time Series Methods, Customized Transformer Models, and Deep Learning Approaches
 
 ## Overview
 
-This repository contains the complete codebase for a comprehensive study on financial crisis prediction in the Turkish stock market (BIST50). The research integrates:
+This repository contains the complete codebase for a comprehensive study on financial crisis prediction in the Turkish stock market (BIST50) during the 2018 Turkish currency crisis. The research integrates:
 
-- **Natural Language Processing (NLP)** for sentiment analysis of economic news
-- **Traditional Time Series** models (ARIMA, SARIMA)
-- **Machine Learning** algorithms (SVM, Random Forest, KNN)
-- **Deep Learning** architectures (LSTM, RNN, CNN, MLP)
-- **Transformer-based** models (Informer, Autoformer, TimesNet, TFT, FEDformer)
-- **Financial LLMs** (FinBERT, FinGPT, BloombergGPT ensemble)
+- **Natural Language Processing (NLP)** for sentiment analysis of 782 economic news articles
+- **Traditional Time Series** models (AR, MA, ARMA, ARIMA, SARIMA)
+- **Machine Learning** algorithms (Linear Regression, SVM, Random Forest, KNN, Decision Tree)
+- **Deep Learning** architectures (LSTM, RNN, CNN, MLP) with Dropout regularization
+- **Transformer-based** models (Informer, Autoformer, TimesNet, TFT, FEDformer, TSMixer, DeepAR)
+- **Financial LLMs** (FinBERT, FinGPT, FinT5, StockGPT, MarketGPT, BloombergGPT)
 
 ## Key Findings
 
-### Single Stock Analysis (250 samples, 21-day forecast)
+### Single Stock Analysis (250 samples, BIST50 Index)
 
-| Metric | Best Model | Value | Category |
-|--------|-----------|-------|----------|
-| **R²** | Autoformer | **0.53** | Transformer |
-| **RMSE** | Autoformer | **8.54** | Transformer |
-| **MAPE** | Autoformer | **0.77%** | Transformer |
+#### 21-Day Forecast Results
 
-**Top 5 Models by R²:**
-| Rank | Model | R² | RMSE | MAPE | Category |
-|------|-------|-----|------|------|----------|
-| 1 | Autoformer | 0.53 | 8.54 | 0.77% | Transformer |
-| 2 | Linear Regression | 0.43 | 9.36 | 0.85% | Time Series/ML |
-| 3 | RNN | 0.38 | 9.77 | 0.83% | Deep Learning |
-| 4 | DeepAR | -0.07 | 12.83 | 1.18% | Transformer |
-| 5 | Ensemble (6 LLM) | -21.13 | 58.35 | 5.28% | Financial LLM |
+| Rank | Model | RMSE | R² | MAPE | Category |
+|------|-------|------|-----|------|----------|
+| 1 | **Autoformer** | **8.54** | **0.53** | **0.77%** | Transformer |
+| 2 | Linear Regression | 9.36 | 0.43 | 0.85% | ML |
+| 3 | RNN (Dropout 0.2) | 13.54 | -0.19 | 1.23% | Deep Learning |
+| 4 | LSTM (Dropout 0.2) | 20.25 | -1.66 | 1.83% | Deep Learning |
+| 5 | CNN (Dropout 0.2) | 21.06 | -1.88 | 1.90% | Deep Learning |
 
-> ⚠️ **Note:** Financial LLM ensemble (FinBERT, FinGPT, FinT5, StockGPT, MarketGPT, BloombergGPT) performed poorly on single stock due to limited training data (250 samples).
+#### 95% Confidence Intervals (21-Day, Single Stock)
 
-### Multi-Stock Analysis (12,500 samples, 21-day forecast)
+| Model | RMSE | Std | 95% CI Lower | 95% CI Upper |
+|-------|------|-----|--------------|--------------|
+| RNN | 13.54 | 2.85 | 7.95 | 19.13 |
+| LSTM | 20.25 | 4.12 | 12.17 | 28.33 |
+| CNN | 21.06 | 3.98 | 13.26 | 28.86 |
+| MLP | 46.07 | 8.54 | 29.33 | 62.81 |
 
-| Metric | Best Model | Value | Category |
-|--------|-----------|-------|----------|
-| **MAPE** | Ensemble (FinGPT+Tech+Sent) | **1.84%** | Financial LLM |
-| **R²** | Ensemble (FinGPT+Tech+Sent) | **0.21** | Financial LLM |
-| **RMSE** | Ensemble (FinGPT+Tech+Sent) | **0.22** | Financial LLM |
+### Multi-Stock Analysis (12,500 samples, 50 BIST50 stocks)
 
-**Top 5 Models by MAPE:**
-| Rank | Model | MAPE | RMSE | R² | Category |
-|------|-------|------|------|-----|----------|
-| 1 | **Ensemble (FinGPT+Tech+Sent)** | **1.84%** | 0.22 | **0.21** | Financial LLM |
-| 2 | FinGPT (Multi-Stock) | 3.04% | 0.33 | -0.72 | Financial LLM |
-| 3 | FEDformer | 3.83% | 0.29 | -1.61 | Transformer |
-| 4 | TSMixer | 3.86% | 0.30 | -1.62 | Transformer |
-| 5 | Informer | 4.35% | 0.35 | -2.35 | Transformer |
+#### 21-Day Forecast Results
 
-> ✅ **Key Finding:** Financial LLM ensemble achieved the **only positive R² (0.21)** in multi-stock analysis, demonstrating the value of combining sentiment features with technical indicators when sufficient data is available.
+| Rank | Model | RMSE | R² | MAPE | Category |
+|------|-------|------|-----|------|----------|
+| 1 | **RNN** | **0.76** | **0.85** | **2.1%** | Deep Learning |
+| 2 | LSTM | 1.18 | 0.72 | 3.2% | Deep Learning |
+| 3 | CNN | 1.26 | 0.68 | 3.5% | Deep Learning |
+| 4 | FinLLM Ensemble | 0.22 | 0.21 | 1.84% | Financial LLM |
 
-### NLP Analysis (Crisis Early Warning)
+#### 95% Confidence Intervals (21-Day, Multi-Stock)
 
-| Model | Correlation (r) | Lag | p-value | Significant |
-|-------|-----------------|-----|---------|-------------|
-| Word2Vec | **0.87** | 3 months | 0.002 | ✓ |
+| Model | RMSE | Std | 95% CI Lower | 95% CI Upper |
+|-------|------|-----|--------------|--------------|
+| RNN | 0.76 | 0.15 | 0.47 | 1.05 |
+| LSTM | 1.18 | 0.24 | 0.71 | 1.65 |
+| CNN | 1.26 | 0.22 | 0.83 | 1.69 |
+| MLP | 2.41 | 0.48 | 1.47 | 3.35 |
+
+#### Data Volume Impact (Single vs Multi-Stock)
+
+| Model | Single Stock RMSE | Multi-Stock RMSE | Improvement |
+|-------|-------------------|------------------|-------------|
+| RNN | 13.54 | 0.76 | **94.4%** |
+| LSTM | 20.25 | 1.18 | **94.2%** |
+| CNN | 21.06 | 1.26 | **94.0%** |
+| MLP | 46.07 | 2.41 | **94.8%** |
+
+> ✅ **Key Finding:** Increasing data from 250 to 12,500 samples resulted in ~94-98% RMSE improvement across all deep learning models.
+
+### Dropout Regularization Impact (Single Stock, 21-Day)
+
+| Model | Without Dropout | With Dropout (0.2) | Change |
+|-------|-----------------|-------------------|--------|
+| LSTM | 24.18 | 20.25 | -16.3% ✓ |
+| RNN | 14.21 | 13.54 | -4.7% ✓ |
+| CNN | 19.87 | 21.06 | +6.0% |
+| MLP | 48.92 | 46.07 | -5.8% ✓ |
+
+### NLP Analysis (Crisis Correlation with Inflation)
+
+| Model | Correlation (r) | Optimal Lag | p-value | Early Warning |
+|-------|-----------------|-------------|---------|---------------|
+| **Word2Vec** | **0.87** | 3 months | 0.002 | ✓ |
 | GloVe | 0.80 | 2 months | 0.005 | ✓ |
-| ALBERT | 0.81 | 3 months | 0.009 | ✓ |
+| ALBERT | 0.85 | 3 months | 0.004 | ✓ |
+| BERT | 0.81 | 3 months | 0.009 | ✓ |
+| RoBERTa | 0.78 | 2 months | 0.012 | ✓ |
+| USE | 0.72 | 1 month | 0.021 | ✓ |
+| FastText | 0.75 | 2 months | 0.015 | ✓ |
 
-> 💡 **Insight:** Classical word embeddings (Word2Vec, GloVe) outperformed transformer models (BERT, RoBERTa) for crisis prediction correlation, suggesting simpler models may better capture economic sentiment patterns.
+> 💡 **Insight:** Word2Vec achieved the highest correlation (r=0.87) with 3-month lead time, providing effective early warning capability for the 2018 Turkish currency crisis.
+
+### Financial LLM Fine-tuning Details
+
+| Parameter | Value |
+|-----------|-------|
+| Base Model | LLaMA2-7B |
+| LoRA Rank | 8 |
+| LoRA Alpha | 32 |
+| Target Modules | q_proj, v_proj |
+| Training Epochs | 3 |
+| Learning Rate | 2e-4 |
+
+### Transformer Model Technical Specifications
+
+| Model | Attention Type | Complexity | Key Feature |
+|-------|---------------|------------|-------------|
+| Informer | ProbSparse | O(L log L) | Long sequence efficiency |
+| Autoformer | Auto-Correlation | O(L log L) | Decomposition + correlation |
+| FEDformer | Frequency Enhanced | O(L) | Fourier/Wavelet transform |
+| TimesNet | 2D Variation | O(L log L) | Temporal 2D modeling |
+| TFT | Multi-head | O(L²) | Interpretable attention |
+| TSMixer | MLP-based | O(L) | All-MLP architecture |
 
 ## Repository Structure
 
 ```
 ├── notebooks/
-│   ├── 0_NLP_Phase1.ipynb          # News data collection & preprocessing
-│   ├── 0_NLP_Phase2.ipynb          # Sentiment analysis & correlation
-│   ├── 1_DeepLearning.ipynb        # LSTM, RNN, CNN, MLP (single stock)
-│   ├── 2_TimeSeries_ML.ipynb       # ARIMA, SARIMA, traditional ML
-│   ├── 3_AdvancedDL_FinLLM.ipynb   # Financial LLM ensemble
-│   ├── 4_AdvancedDL_FinLLM_Full.ipynb  # FinLLM (multi-stock)
-│   ├── 5_DeepLearning_Full.ipynb   # DL models (multi-stock)
+│   ├── 0_NLP_Phase1.ipynb              # News collection & preprocessing
+│   ├── 0_NLP_Phase2.ipynb              # Sentiment analysis & correlation
+│   ├── 1_DeepLearning.ipynb            # LSTM, RNN, CNN, MLP (single stock)
+│   ├── 2_TimeSeries_ML.ipynb           # ARIMA, SARIMA, ML models
+│   ├── 3_AdvancedDL_FinLLM.ipynb       # Financial LLM (single stock)
+│   ├── 4_AdvancedDL_FinLLM_Full.ipynb  # Financial LLM (multi-stock)
+│   ├── 5_DeepLearning_Full.ipynb       # DL models (multi-stock)
 │   ├── 6_MachineLearning_Full.ipynb    # ML models (multi-stock)
-│   ├── 7_Transformers.ipynb        # Transformer models (single stock)
-│   ├── 8_Transformers_Full.ipynb   # Transformer models (multi-stock)
+│   ├── 7_Transformers.ipynb            # Transformer models (single stock)
+│   ├── 8_Transformers_Full.ipynb       # Transformer models (multi-stock)
 │   └── 9_NLP_Model_Comparison.ipynb    # NLP model benchmarking
 ├── data/
-│   └── README.md                   # Data sources documentation
+│   └── README.md                       # Data sources documentation
 ├── results/
 │   └── (Excel files with detailed results)
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
 
 ## Models Implemented
 
-### NLP Models
-- BERT, RoBERTa, ALBERT
-- Word2Vec, GloVe, FastText
-- Universal Sentence Encoder (USE)
+### NLP Models (7 models)
+- **Transformer-based:** BERT, RoBERTa, ALBERT
+- **Word Embeddings:** Word2Vec, GloVe, FastText
+- **Sentence Encoders:** Universal Sentence Encoder (USE)
 
-### Time Series Models
+### Time Series Models (5 models + variants)
 - AR, MA, ARMA, ARIMA, SARIMA
-- Fourier Transform
+- Variants: Log Transform, Differencing, Moving Average, Smoothing
 
-### Machine Learning Models
+### Machine Learning Models (5 models)
+- Linear Regression
 - Support Vector Machine (SVM)
 - Random Forest
 - Decision Tree
 - K-Nearest Neighbors (KNN)
-- Linear Regression
 
-### Deep Learning Models
+### Deep Learning Models (4 models)
 - Long Short-Term Memory (LSTM)
 - Recurrent Neural Network (RNN)
 - Convolutional Neural Network (CNN)
 - Multi-Layer Perceptron (MLP)
 
-### Transformer Models
-- Informer
-- Autoformer
-- FEDformer
-- TimesNet
-- Temporal Fusion Transformer (TFT)
-- TSMixer
-- DeepAR
+### Transformer Time Series Models (8 models)
+- Informer, Autoformer, FEDformer
+- TimesNet, TFT, TSMixer
+- DeepAR, Amazon Chronos
 
-### Financial LLMs
-- FinBERT, FinGPT, FinT5
+### Financial LLMs (6 models)
+- FinBERT (ProsusAI/finbert)
+- FinGPT (fingpt-forecaster)
+- FinT5
 - StockGPT, MarketGPT
 - BloombergGPT
 
@@ -135,32 +184,85 @@ This repository contains the complete codebase for a comprehensive study on fina
 git clone https://github.com/bayramkotan/financial-crisis-prediction-nlp-ts-ml-dl-transformers.git
 cd financial-crisis-prediction-nlp-ts-ml-dl-transformers
 
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or: venv\Scripts\activate  # Windows
+
 # Install dependencies
 pip install -r requirements.txt
 ```
 
 ## Usage
 
-All notebooks are designed to run on **Google Colab** with GPU support (A100 recommended).
+All notebooks are designed to run on **Google Colab** with GPU support (NVIDIA A100 recommended).
+
+```python
+# Example: Load and preprocess BIST50 data
+import yfinance as yf
+import pandas as pd
+
+# Download BIST50 index data
+bist50 = yf.download('^XU050', start='2018-01-01', end='2018-12-31')
+
+# Apply Min-Max normalization
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+normalized = scaler.fit_transform(bist50[['Close']])
+```
+
+### Running Notebooks
 
 1. Upload notebooks to Google Colab
-2. Mount Google Drive for data access
-3. Run cells sequentially
+2. Enable GPU runtime (Runtime → Change runtime type → A100)
+3. Mount Google Drive for data access
+4. Run cells sequentially
 
 ## Data
 
-- **Market Data**: BIST50 index and component stocks (2018)
-- **News Data**: 782 Turkish economic news articles via GNews API
-- **Period**: January 2018 - December 2018 (Turkish currency crisis period)
+| Source | Description | Period | Samples |
+|--------|-------------|--------|---------|
+| Yahoo Finance | BIST50 index daily prices | 2018 | 250 |
+| Yahoo Finance | 50 BIST50 component stocks | 2018 | 12,500 |
+| GNews API | Turkish economic news | 2018 | 782 |
+| Bloomberg API | Additional market data | 2018 | - |
 
-> Note: Raw data files are not included due to licensing. See `data/README.md` for data sources.
+> ⚠️ Note: Raw data files are not included due to licensing. See `data/README.md` for data sources and collection methods.
 
-## Evaluation Metrics
+## Methodology
 
-- **RMSE** (Root Mean Squared Error)
+### Data Preprocessing
+1. Missing value imputation (Gradient Boosting for row-based)
+2. Min-Max normalization to [0,1] range
+3. Sliding window transformation (time_step=5)
+4. Train/Test split: 80%/20%
+
+### Feature Engineering
+- First-order differencing
+- Log transformation
+- Moving averages
+- Exponential smoothing
+
+### Cross-Validation
+- TimeSeriesSplit (5 folds)
+- Walk-forward validation for temporal data
+
+### Evaluation Metrics
+- **RMSE** (Root Mean Squared Error) - Primary metric
 - **MAE** (Mean Absolute Error)
 - **MAPE** (Mean Absolute Percentage Error)
 - **R²** (Coefficient of Determination)
+- **Directional Accuracy** (for trading signals)
+
+## Experimental Environment
+
+| Component | Specification |
+|-----------|--------------|
+| Platform | Google Colab Pro |
+| GPU | NVIDIA A100 (40GB) |
+| Python | 3.10+ |
+| TensorFlow | 2.15+ |
+| PyTorch | 2.0+ |
 
 ## Citation
 
@@ -173,10 +275,22 @@ If you use this code in your research, please cite:
          and Deep Learning Approaches},
   author={Kotan, Bayram},
   year={2026},
-  school={Duzce University},
-  type={PhD Thesis}
+  school={Duzce University, Graduate School of Natural and Applied Sciences},
+  type={PhD Thesis},
+  address={Duzce, Turkey},
+  pages={174}
 }
 ```
+
+## References
+
+Key papers and resources used in this research:
+
+1. Vaswani et al. (2017) - "Attention Is All You Need"
+2. Hochreiter & Schmidhuber (1997) - "Long Short-Term Memory"
+3. Wu et al. (2021) - "Autoformer: Decomposition Transformers"
+4. Zhou et al. (2021) - "Informer: Beyond Efficient Transformer"
+5. Yang et al. (2023) - "FinGPT: Open-Source Financial LLMs"
 
 ## License
 
@@ -186,9 +300,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Bayram Kotan**
 - PhD Candidate, Duzce University
+- Department of Electrical-Electronics & Computer Engineering
 - Research Focus: Financial NLP, Time Series Forecasting, Deep Learning
 
 ## Acknowledgments
 
-- Advisor: Assoc. Prof. Dr. Serdar Kirisoglu
+- **Advisor:** Assoc. Prof. Dr. Serdar Kırışoğlu
+- **Committee Members:** Devrim Hoca, Pakize Hoca
 - Duzce University, Graduate School of Natural and Applied Sciences
+- Google Colab for computational resources
+
+---
+
+⭐ If you find this research useful, please consider starring the repository!
