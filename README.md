@@ -306,7 +306,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - **Advisor:** Assoc. Prof. Dr. Serdar Kırışoğlu
-- **Committee Members:** Devrim Hoca, Pakize Hoca
 - Duzce University, Graduate School of Natural and Applied Sciences
 - Google Colab for computational resources
 
