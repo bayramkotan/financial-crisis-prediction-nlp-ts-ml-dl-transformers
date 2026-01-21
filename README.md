@@ -16,7 +16,7 @@ This repository contains the complete codebase for a comprehensive study on fina
 - **Machine Learning** algorithms (Linear Regression, SVM, Random Forest, KNN, Decision Tree)
 - **Deep Learning** architectures (LSTM, RNN, CNN, MLP) with Dropout regularization
 - **Transformer-based** models (Informer, Autoformer, TimesNet, TFT, FEDformer, TSMixer, DeepAR)
-- **Financial LLMs** (FinBERT, FinGPT, FinT5, StockGPT, MarketGPT, BloombergGPT)
+- **Financial LLMs** (FinBERT, FinGPT, FinT5)
 
 ## Key Findings
 
