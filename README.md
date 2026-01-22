@@ -178,7 +178,7 @@ FastText (lag=0)    ████████████████████
 </td>
 <td width="33%" valign="top">
 
-### ⚡ Transformers (8)
+### ⚡ Transformers (7)
 ```
 ├── Autoformer ⭐
 ├── Informer
@@ -186,8 +186,7 @@ FastText (lag=0)    ████████████████████
 ├── TimesNet
 ├── TFT
 ├── TSMixer
-├── DeepAR
-└── Chronos
+└── DeepAR
 ```
 
 </td>
