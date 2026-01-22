@@ -70,48 +70,49 @@ This repository presents a **multi-layered early warning system** for the **2018
 
 ### 🏅 Model Performance Leaderboard (21-Day Forecast, Single Stock)
 
-```
-+------+-------------------+-------+-------+-------+------------------+
-| RANK | MODEL             | RMSE  |  R²   | MAPE  | CATEGORY         |
-+------+-------------------+-------+-------+-------+------------------+
-| 🥇 1 | Autoformer        |  8.54 | +0.53 | 0.77% | Transformer      |
-| 🥈 2 | Linear Regression |  9.36 | +0.43 | 0.85% | Machine Learning |
-| 🥉 3 | Informer          | 12.12 | +0.15 | 1.11% | Transformer      |
-|    4 | DeepAR            | 12.83 | -0.07 | 1.18% | Transformer      |
-|    5 | FinLLM Ensemble   | 13.19 | -0.13 | 1.32% | Financial LLM    |
-|    6 | SARIMA            | 13.35 |   -   | 1.21% | Time Series      |
-|    7 | RNN               | 13.54 | -0.19 | 1.23% | Deep Learning    |
-+------+-------------------+-------+-------+-------+------------------+
-```
+| Rank | Model | RMSE | R² | MAPE | Category |
+|:----:|:------|:----:|:--:|:----:|:---------|
+| 🥇 | **Autoformer** | **8.54** | **+0.53** | **0.77%** | Transformer |
+| 🥈 | Linear Regression | 9.36 | +0.43 | 0.85% | Machine Learning |
+| 🥉 | Informer | 12.12 | +0.15 | 1.11% | Transformer |
+| 4 | DeepAR | 12.83 | -0.07 | 1.18% | Transformer |
+| 5 | FinLLM Ensemble | 13.19 | -0.13 | 1.32% | Financial LLM |
+| 6 | SARIMA | 13.35 | - | 1.21% | Time Series |
+| 7 | RNN | 13.54 | -0.19 | 1.23% | Deep Learning |
 
 ### 📊 Performance by Category
 
-```
-              SINGLE STOCK (21-Day)                 MULTI-STOCK (21-Day)
-                    
-RMSE Performance:                           RMSE Performance:
-                                                  
-Transformer    |========............|  8.54     Financial LLM  |==..................|  0.22
-ML             |=========...........|  9.36     Transformer    |===.................|  0.29
-Time Series    |=============.......|  13.35    Deep Learning  |========............|  0.75
-Deep Learning  |=============.......|  13.54    ML             |========............|  0.77
-Financial LLM  |=============.......|  13.19        
-```
+**Single Stock (21-Day) - RMSE by Category:**
+
+| Category | Best Model | RMSE |
+|:---------|:-----------|:----:|
+| 🏆 Transformer | Autoformer | 8.54 |
+| Machine Learning | Linear Regression | 9.36 |
+| Financial LLM | Ensemble | 13.19 |
+| Time Series | SARIMA | 13.35 |
+| Deep Learning | RNN | 13.54 |
+
+**Multi-Stock (21-Day) - RMSE by Category:**
+
+| Category | Best Model | RMSE |
+|:---------|:-----------|:----:|
+| 🏆 Financial LLM | Ensemble | 0.22 |
+| Transformer | TSMixer | 0.29 |
+| Deep Learning | CNN | 0.75 |
+| Machine Learning | Linear Reg | 0.77 |
 
 ### 🔍 NLP Early Warning System
 
 Our **Word2Vec-based sentiment analysis** achieved remarkable predictive power:
 
-```
-                    NLP Model Correlation with Inflation
-                    
-Word2Vec (lag=3)    |==================================| r = 0.8715 *BEST*
-Word2Vec (lag=2)    |=================================.| r = 0.8621
-ALBERT (lag=3)      |================================..| r = 0.8058
-GloVe (lag=2)       |===============================...| r = 0.8025
-USE (lag=3)         |=============================.....| r = 0.7443
-FastText (lag=0)    |===========================.......| r = 0.6800
-```
+| Model | Lag | Correlation | p-value | Status |
+|:------|:---:|:-----------:|:-------:|:------:|
+| **Word2Vec** | 3 months | **r = 0.8715** | 0.0022 | 🏆 Best |
+| Word2Vec | 2 months | r = 0.8621 | 0.0013 | ✅ |
+| ALBERT | 3 months | r = 0.8058 | 0.0087 | ✅ |
+| GloVe | 2 months | r = 0.8025 | 0.0052 | ✅ |
+| USE | 3 months | r = 0.7443 | 0.0214 | ✅ |
+| FastText | 0 months | r = 0.6800 | 0.0150 | ✅ |
 
 > 💡 **Key Finding:** Word2Vec predicted inflation changes **3 months in advance** with 87% correlation!
 
@@ -270,66 +271,59 @@ Fine-tuned with LoRA:
 
 ### 💰 Financial LLM Ensemble Results
 
-```
-+=========================================================================+
-|                    FinLLM Ensemble Performance                          |
-+=========================================================================+
-|                                                                         |
-|   Sentiment Scores:                                                     |
-|   +-- FinBERT:  ================--------  -0.087 (Bearish)              |
-|   +-- FinGPT:   ========================  +0.045 (Neutral)              |
-|   +-- FinT5:    ========----------------  -0.391 (Very Bearish)         |
-|                                                                         |
-|   Ensemble:     ================--------  -0.117 (Bearish)              |
-|                                                                         |
-+-------------------------------------------------------------------------+
-|   Forecast   |  RMSE   |  Naive  |  Improvement                         |
-+-------------------------------------------------------------------------+
-|   1-Day      |   2.42  |   4.54  |  ======================  47%         |
-|   10-Day     |  15.72  |  32.87  |  ==========================  52%     |
-|   21-Day     |  13.19  |  36.74  |  ================================ 64% |
-+=========================================================================+
-```
+**Sentiment Scores:**
+
+| Model | Score | Interpretation |
+|:------|:-----:|:---------------|
+| FinBERT | -0.087 | 📉 Bearish |
+| FinGPT | +0.045 | ➡️ Neutral |
+| FinT5 | -0.391 | 📉📉 Very Bearish |
+| **Ensemble** | **-0.117** | **📉 Bearish** |
+
+**Forecast Performance vs Naive Baseline:**
+
+| Period | Ensemble RMSE | Naive RMSE | Improvement |
+|:------:|:-------------:|:----------:|:-----------:|
+| 1-Day | 2.42 | 4.54 | ✅ **47%** |
+| 10-Day | 15.72 | 32.87 | ✅ **52%** |
+| 21-Day | 13.19 | 36.74 | ✅ **64%** |
 
 ---
 
 ## 🏗️ Architecture
 
+<div align="center">
+
 ```
-+=============================================================================+
-|                     EARLY WARNING SYSTEM ARCHITECTURE                       |
-+=============================================================================+
-|                                                                             |
-|  +------------------+    +------------------+    +------------------+       |
-|  |   NEWS DATA      |    |   PRICE DATA     |    |   INDICATORS     |       |
-|  |  (782 articles)  |    |  (BIST50 Index)  |    |   (Inflation)    |       |
-|  +--------+---------+    +--------+---------+    +--------+---------+       |
-|           |                       |                       |                 |
-|           v                       v                       v                 |
-|  +---------------------------------------------------------------------+   |
-|  |                      PREPROCESSING LAYER                             |   |
-|  |  * Translation (TR->EN)  * Normalization  * Feature Engineering      |   |
-|  +---------------------------------------------------------------------+   |
-|                                   |                                         |
-|           +-----------------------+-----------------------+                 |
-|           v                       v                       v                 |
-|  +------------------+    +------------------+    +------------------+       |
-|  |   NLP LAYER      |    |  FORECAST LAYER  |    | ENSEMBLE LAYER   |       |
-|  |                  |    |                  |    |                  |       |
-|  |  * Word2Vec      |    |  * Autoformer    |    |  * FinBERT       |       |
-|  |  * ALBERT        |    |  * LSTM/RNN      |    |  * FinGPT        |       |
-|  |  * GloVe         |    |  * Linear Reg    |    |  * FinT5         |       |
-|  +--------+---------+    +--------+---------+    +--------+---------+       |
-|           |                       |                       |                 |
-|           +-----------------------+-----------------------+                 |
-|                                   v                                         |
-|  +---------------------------------------------------------------------+   |
-|  |                    EARLY WARNING SIGNAL                              |   |
-|  |         Sentiment + Price Forecast + Technical Analysis              |   |
-|  +---------------------------------------------------------------------+   |
-|                                                                             |
-+=============================================================================+
+                    ┌──────────────────────────────────────────┐
+                    │      EARLY WARNING SYSTEM ARCHITECTURE    │
+                    └──────────────────────────────────────────┘
+                                        │
+          ┌─────────────────────────────┼─────────────────────────────┐
+          ▼                             ▼                             ▼
+   ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+   │  📰 NEWS    │              │  📈 PRICE   │              │  📊 MACRO   │
+   │ 782 articles│              │ BIST50 Index│              │ Inflation   │
+   └──────┬──────┘              └──────┬──────┘              └──────┬──────┘
+          │                            │                            │
+          ▼                            ▼                            ▼
+   ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+   │ NLP LAYER   │              │  FORECAST   │              │  ENSEMBLE   │
+   │             │              │   LAYER     │              │   LAYER     │
+   │ • Word2Vec  │              │ • Autoformer│              │ • FinBERT   │
+   │ • ALBERT    │              │ • LSTM/RNN  │              │ • FinGPT    │
+   │ • GloVe     │              │ • Linear Reg│              │ • FinT5     │
+   └──────┬──────┘              └──────┬──────┘              └──────┬──────┘
+          │                            │                            │
+          └─────────────────────────────┼─────────────────────────────┘
+                                        ▼
+                    ┌──────────────────────────────────────────┐
+                    │        🚨 EARLY WARNING SIGNAL           │
+                    │  Sentiment + Forecast + Technical Analysis│
+                    └──────────────────────────────────────────┘
 ```
+
+</div>
 
 ---
 
@@ -455,7 +449,7 @@ If you use this code, please cite:
 ### 🙏 Acknowledgments
 
 - **Advisor:** Assoc. Prof. Dr. Serdar Kırışoğlu
-- **Committee:** Prof. Dr. Resul Kara, Prof. Dr. Pakize Erdoğmuş, Assoc. Prof. Dr. Devrim Akgün, Dr. Murat İskefiyeli
+- **Committee:** Prof. Dr. Resul Kara, Prof. Dr. Pakize Erdoğmuş, Prof. Dr. Devrim Akgün, Assoc. Prof. Dr. Murat İskefiyeli
 - **Resources:** Google Colab, Hugging Face, NeuralForecast
 
 ---
