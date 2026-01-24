@@ -439,7 +439,7 @@ pip install -r requirements.txt
 
 **Quick Install:**
 ```bash
-pip install pandas numpy scipy matplotlib seaborn scikit-learn tensorflow torch transformers neuralforecast statsmodels gensim peft accelerate
+pip install pandas>=2.0 numpy>=1.24 scipy>=1.10 matplotlib>=3.7 seaborn>=0.12 scikit-learn>=1.3 tensorflow>=2.15 torch>=2.0 transformers>=4.36 neuralforecast>=1.7 statsmodels>=0.14 gensim>=4.3 peft>=0.7 accelerate>=0.25
 ```
 
 ---
