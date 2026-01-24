@@ -5,7 +5,7 @@
 <h1 align="center">
   🔮 Financial Crisis Prediction
   <br/>
-  <sub>NLP • Time Series • Machine Learning • Deep Learning • Transformers</sub>
+  <sub>NLP • Time Series • Machine Learning • Deep Learning • Transformer TS • Financial LLM</sub>
 </h1>
 
 <p align="center">
@@ -36,6 +36,7 @@
 
 This repository presents a **multi-layered early warning system** for the **2018 Turkish Currency Crisis**, analyzing the BIST50 stock market using **35+ models** across 6 categories.
 
+<div align="center">
 <table>
 <tr>
 <td width="50%">
@@ -55,14 +56,15 @@ This repository presents a **multi-layered early warning system** for the **2018
 ### 🏆 Best Results
 
 | Scenario | Best Model | RMSE |
-|:---------|:-----------|:-----|
+|:---------|:-----------|-----:|
 | 📈 Single Stock (21d) | **Autoformer** | **8.54** |
-| 📊 Multi-Stock (21d) | **CNN** | **0.75** |
+| 📊 Multi-Stock (21d) | **FEDformer** | **0.29** |
 | 📰 NLP Correlation | **Word2Vec** | **r=0.87** |
 
 </td>
 </tr>
 </table>
+</div>
 
 ---
 
@@ -70,40 +72,50 @@ This repository presents a **multi-layered early warning system** for the **2018
 
 ### 🏅 Model Performance Leaderboard (21-Day Forecast, Single Stock)
 
+<div align="center">
+
 | Rank | Model | RMSE | R² | MAPE | Category |
-|:----:|:------|:----:|:--:|:----:|:---------|
-| 🥇 | **Autoformer** | **8.54** | **+0.53** | **0.77%** | Transformer |
+|:----:|:------|-----:|:--:|-----:|:---------|
+| 🥇 | **Autoformer** | **8.54** | **+0.53** | **0.77%** | Transformer TS |
 | 🥈 | Linear Regression | 9.36 | +0.43 | 0.85% | Machine Learning |
-| 🥉 | Informer | 12.12 | +0.15 | 1.11% | Transformer |
-| 4 | DeepAR | 12.83 | -0.07 | 1.18% | Transformer |
+| 🥉 | Informer | 12.12 | +0.05 | 1.11% | Transformer TS |
+| 4 | DeepAR | 12.83 | -0.07 | 1.18% | Transformer TS |
 | 5 | FinLLM Ensemble | 13.19 | -0.13 | 1.32% | Financial LLM |
-| 6 | SARIMA | 13.35 | - | 1.21% | Time Series |
-| 7 | RNN | 13.54 | -0.19 | 1.23% | Deep Learning |
+| 6 | AR Fark Alma | 13.35 | -0.16 | 1.10% | Time Series |
+| 7 | RNN | 13.54 | -0.19 | 1.24% | Deep Learning |
+
+</div>
 
 ### 📊 Performance by Category
+
+<div align="center">
 
 **Single Stock (21-Day) - RMSE by Category:**
 
 | Category | Best Model | RMSE |
-|:---------|:-----------|:----:|
-| 🏆 Transformer | Autoformer | 8.54 |
+|:---------|:-----------|-----:|
+| 🏆 Transformer TS | Autoformer | 8.54 |
 | Machine Learning | Linear Regression | 9.36 |
 | Financial LLM | Ensemble | 13.19 |
-| Time Series | SARIMA | 13.35 |
+| Time Series | AR Fark Alma | 13.35 |
 | Deep Learning | RNN | 13.54 |
 
 **Multi-Stock (21-Day) - RMSE by Category:**
 
 | Category | Best Model | RMSE |
-|:---------|:-----------|:----:|
-| 🏆 Financial LLM | Ensemble | 0.22 |
-| Transformer | TSMixer | 0.29 |
+|:---------|:-----------|-----:|
+| 🏆 Transformer TS | FEDformer | 0.29 |
+| Financial LLM | Ensemble | 0.32 |
 | Deep Learning | CNN | 0.75 |
 | Machine Learning | Linear Reg | 0.77 |
+
+</div>
 
 ### 🔍 NLP Early Warning System
 
 Our **Word2Vec-based sentiment analysis** achieved remarkable predictive power:
+
+<div align="center">
 
 | Model | Lag | Correlation | p-value | Status |
 |:------|:---:|:-----------:|:-------:|:------:|
@@ -114,12 +126,15 @@ Our **Word2Vec-based sentiment analysis** achieved remarkable predictive power:
 | USE | 3 months | r = 0.7443 | 0.0214 | ✅ |
 | FastText | 0 months | r = 0.6800 | 0.0150 | ✅ |
 
+</div>
+
 > 💡 **Key Finding:** Word2Vec predicted inflation changes **3 months in advance** with 87% correlation!
 
 ---
 
 ## 🧠 Models
 
+<div align="center">
 <table>
 <tr>
 <td width="33%" valign="top">
@@ -179,7 +194,7 @@ Our **Word2Vec-based sentiment analysis** achieved remarkable predictive power:
 </td>
 <td width="33%" valign="top">
 
-### ⚡ Transformers (7)
+### ⚡ Transformer TS (7)
 ```
 ├── Autoformer ⭐
 ├── Informer
@@ -208,24 +223,30 @@ Fine-tuned with LoRA:
 </td>
 </tr>
 </table>
+</div>
 
 ---
 
 ## 📉 Detailed Results
 
-### 🎯 Transformer Models (21-Day Forecast)
+### 🎯 Transformer TS Models (21-Day Forecast, Single Stock)
+
+<div align="center">
 
 | Model | RMSE | MAE | R² | MAPE | Dir. Acc. | Key Feature |
-|:------|:----:|:---:|:--:|:----:|:---------:|:------------|
+|:------|-----:|----:|:--:|-----:|:---------:|:------------|
 | 🥇 **Autoformer** | **8.54** | 6.89 | **+0.53** | 0.77% | 60.0% | Auto-Correlation |
-| 🥈 Informer | 12.12 | 9.81 | +0.15 | 1.11% | 43.3% | ProbSparse Attention |
+| 🥈 Informer | 12.12 | 9.81 | +0.05 | 1.11% | 43.3% | ProbSparse Attention |
 | 🥉 DeepAR | 12.83 | 10.48 | -0.07 | 1.18% | 53.3% | Probabilistic |
-| TSMixer | 19.38 | 16.48 | -1.44 | 1.87% | **63.3%** | All-MLP |
 | TimesNet | 19.49 | 16.00 | -1.47 | 1.81% | 33.3% | 2D Variation |
+| TSMixer | 19.38 | 16.48 | -1.44 | 1.87% | **63.3%** | All-MLP |
 | TFT | 48.44 | 47.01 | -14.25 | 5.30% | 36.7% | Multi-horizon |
+
+</div>
 
 ### 🧬 Deep Learning Models (21-Day Forecast)
 
+<div align="center">
 <table>
 <tr>
 <th>Model</th>
@@ -266,15 +287,18 @@ Fine-tuned with LoRA:
 </td>
 </tr>
 </table>
+</div>
 
 > ⚠️ **Note:** RMSE reduction is due to: (1) Scale difference (index ~1000 pts vs stock prices ~10-100 TL), (2) Data volume increase (250 → 12,500 samples)
 
 ### 💰 Financial LLM Ensemble Results
 
+<div align="center">
+
 **Sentiment Scores:**
 
 | Model | Score | Interpretation |
-|:------|:-----:|:---------------|
+|:------|------:|:---------------|
 | FinBERT | -0.087 | 📉 Bearish |
 | FinGPT | +0.045 | ➡️ Neutral |
 | FinT5 | -0.391 | 📉📉 Very Bearish |
@@ -287,6 +311,8 @@ Fine-tuned with LoRA:
 | 1-Day | 2.42 | 4.54 | ✅ **47%** |
 | 10-Day | 15.72 | 32.87 | ✅ **52%** |
 | 21-Day | 13.19 | 36.74 | ✅ **64%** |
+
+</div>
 
 ---
 
@@ -340,8 +366,8 @@ Fine-tuned with LoRA:
 │   ├── 📓 4_AdvancedDL_FinLLM_Full.ipynb # FinLLM (multi-stock)
 │   ├── 📓 5_DeepLearning_Full.ipynb    # DL (multi-stock)
 │   ├── 📓 6_MachineLearning_Full.ipynb # ML (multi-stock)
-│   ├── 📓 7_Transformers.ipynb         # Transformers (single)
-│   ├── 📓 8_Transformers_Full.ipynb    # Transformers (multi)
+│   ├── 📓 7_Transformers.ipynb         # Transformer TS (single)
+│   ├── 📓 8_Transformers_Full.ipynb    # Transformer TS (multi)
 │   └── 📓 9_NLP_Comparison.ipynb       # NLP benchmarking
 ├── 📂 data/
 │   └── 📄 README.md                    # Data sources
@@ -388,12 +414,16 @@ gensim>=4.3
 
 ## 🖥️ Environment
 
+<div align="center">
+
 | Component | Specification |
 |:----------|:-------------|
 | **Platform** | Google Colab Pro |
 | **GPU** | NVIDIA A100 (40GB) |
 | **Python** | 3.10+ |
 | **Framework** | TensorFlow 2.15 / PyTorch 2.0 |
+
+</div>
 
 ---
 
@@ -418,6 +448,8 @@ If you use this code, please cite:
 
 ## 📚 Key References
 
+<div align="center">
+
 | Paper | Authors | Year | Contribution |
 |:------|:--------|:----:|:-------------|
 | Attention Is All You Need | Vaswani et al. | 2017 | Transformer architecture |
@@ -426,10 +458,13 @@ If you use this code, please cite:
 | FinBERT | Yang et al. | 2020 | Financial sentiment |
 | FinGPT | Yang et al. | 2023 | Open-source financial LLM |
 
+</div>
+
 ---
 
 ## 👤 Author
 
+<div align="center">
 <table>
 <tr>
 <td width="150">
@@ -445,6 +480,7 @@ If you use this code, please cite:
 </td>
 </tr>
 </table>
+</div>
 
 ### 🙏 Acknowledgments
 
