@@ -44,6 +44,10 @@
 
 ## 📖 About the Project
 
+<p align="center">
+  <img src="assets/finance-ai.jpeg" alt="AI in Finance" width="500"/>
+</p>
+
 ### The 2018 Turkish Currency Crisis
 
 In August 2018, Turkey experienced one of its most severe currency crises in modern history. The Turkish Lira lost approximately **40% of its value** against the US Dollar within a few months, causing:
@@ -579,6 +583,7 @@ If you use this code or find our research helpful, please cite:
 | **Department** | Electrical-Electronics & Computer Engineering |
 | **Research Areas** | Financial NLP, Time Series Forecasting, Deep Learning |
 | **Advisor** | Assoc. Prof. Dr. Serdar Kırışoğlu |
+| **LinkedIn** | [linkedin.com/in/bayramkotan](https://www.linkedin.com/in/bayramkotan/) |
 
 </div>
 
