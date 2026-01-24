@@ -140,43 +140,41 @@ Our **Word2Vec-based sentiment analysis** achieved remarkable predictive power:
 <td width="33%" valign="top">
 
 ### 📰 NLP Models (7)
-```
-├── 🤖 BERT
-├── 🤖 ALBERT
-├── 🤖 RoBERTa
-├── 📝 Word2Vec
-├── 📝 GloVe
-├── 📝 FastText
-└── 🔤 USE
-```
+| Model | Link |
+|:------|:-----|
+| BERT | [GitHub](https://github.com/google-research/bert) |
+| ALBERT | [GitHub](https://github.com/google-research/albert) |
+| RoBERTa | [GitHub](https://github.com/facebookresearch/fairseq) |
+| Word2Vec | [GitHub](https://github.com/tmikolov/word2vec) |
+| GloVe | [GitHub](https://github.com/stanfordnlp/GloVe) |
+| FastText | [GitHub](https://github.com/facebookresearch/fastText) |
+| USE | [TF Hub](https://tfhub.dev/google/universal-sentence-encoder/4) |
 
 </td>
 <td width="33%" valign="top">
 
 ### 📈 Time Series (5+)
-```
-├── AR
-├── MA
-├── ARMA
-├── ARIMA
-├── SARIMA
-└── + variants
-    ├── Log Transform
-    ├── Differencing
-    └── Smoothing
-```
+| Model | Link |
+|:------|:-----|
+| AR/MA/ARMA | [statsmodels](https://github.com/statsmodels/statsmodels) |
+| ARIMA | [statsmodels](https://github.com/statsmodels/statsmodels) |
+| SARIMA | [pmdarima](https://github.com/alkaline-ml/pmdarima) |
+| + Variants | |
+| └─ Log Transform | |
+| └─ Differencing | |
+| └─ Smoothing | |
 
 </td>
 <td width="33%" valign="top">
 
 ### 🤖 Machine Learning (5)
-```
-├── Linear Regression
-├── SVM (RBF Kernel)
-├── Random Forest
-├── Decision Tree
-└── KNN
-```
+| Model | Link |
+|:------|:-----|
+| Linear Regression | [sklearn](https://github.com/scikit-learn/scikit-learn) |
+| SVM (RBF) | [sklearn](https://github.com/scikit-learn/scikit-learn) |
+| Random Forest | [sklearn](https://github.com/scikit-learn/scikit-learn) |
+| Decision Tree | [sklearn](https://github.com/scikit-learn/scikit-learn) |
+| KNN | [sklearn](https://github.com/scikit-learn/scikit-learn) |
 
 </td>
 </tr>
@@ -184,41 +182,43 @@ Our **Word2Vec-based sentiment analysis** achieved remarkable predictive power:
 <td width="33%" valign="top">
 
 ### 🧬 Deep Learning (4)
-```
-├── LSTM
-├── RNN
-├── CNN
-└── MLP
-```
+| Model | Link |
+|:------|:-----|
+| LSTM | [TensorFlow](https://github.com/tensorflow/tensorflow) |
+| RNN | [TensorFlow](https://github.com/tensorflow/tensorflow) |
+| CNN | [TensorFlow](https://github.com/tensorflow/tensorflow) |
+| MLP | [TensorFlow](https://github.com/tensorflow/tensorflow) |
 
 </td>
 <td width="33%" valign="top">
 
 ### ⚡ Transformer TS (7)
-```
-├── Autoformer ⭐
-├── Informer
-├── FEDformer
-├── TimesNet
-├── TFT
-├── TSMixer
-└── DeepAR
-```
+| Model | Link |
+|:------|:-----|
+| Autoformer ⭐ | [GitHub](https://github.com/thuml/Autoformer) |
+| Informer | [GitHub](https://github.com/zhouhaoyi/Informer2020) |
+| FEDformer | [GitHub](https://github.com/MAZiqing/FEDformer) |
+| TimesNet | [GitHub](https://github.com/thuml/TimesNet) |
+| TFT | [GitHub](https://github.com/google-research/google-research/tree/master/tft) |
+| TSMixer | [GitHub](https://github.com/google-research/google-research/tree/master/tsmixer) |
+| DeepAR | [GluonTS](https://github.com/awslabs/gluonts) |
 
 </td>
 <td width="33%" valign="top">
 
 ### 💰 Financial LLMs (3)
-```
-├── FinBERT
-├── FinGPT
-└── FinT5
+| Model | Link |
+|:------|:-----|
+| FinBERT | [GitHub](https://github.com/ProsusAI/finBERT) |
+| FinGPT | [GitHub](https://github.com/AI4Finance-Foundation/FinGPT) |
+| FinT5 | [HuggingFace](https://huggingface.co/SALT-NLP/FLANG-T5) |
 
-Fine-tuned with LoRA:
-├── rank: 8
-├── alpha: 32
-└── epochs: 3
-```
+**Fine-tuned with LoRA:**
+| Param | Value |
+|:------|:------|
+| rank | 8 |
+| alpha | 32 |
+| epochs | 3 |
 
 </td>
 </tr>
@@ -464,57 +464,14 @@ pip install pandas>=2.0 numpy>=1.24 scipy>=1.10 matplotlib>=3.7 seaborn>=0.12 sc
 ### 📚 Key Libraries by Category
 
 <div align="center">
-<table>
-<tr>
-<td align="center" width="20%">
 
-**🔬 ML/DL**
-<br/>
-<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white"/>
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white"/>
-<img src="https://img.shields.io/badge/Keras-D00000?style=flat&logo=keras&logoColor=white"/>
-<img src="https://img.shields.io/badge/sklearn-F7931E?style=flat&logo=scikit-learn&logoColor=white"/>
+| 🔬 ML/DL | 🤗 NLP | 📈 Time Series | 💰 FinLLM | 📊 Data |
+|:--------:|:------:|:--------------:|:---------:|:-------:|
+| [TensorFlow](https://tensorflow.org/) | [Transformers](https://huggingface.co/transformers/) | [NeuralForecast](https://nixtla.github.io/neuralforecast/) | [PEFT](https://github.com/huggingface/peft) | [Pandas](https://pandas.pydata.org/) |
+| [PyTorch](https://pytorch.org/) | [NLTK](https://www.nltk.org/) | [statsmodels](https://www.statsmodels.org/) | [LoRA](https://github.com/microsoft/LoRA) | [NumPy](https://numpy.org/) |
+| [Keras](https://keras.io/) | [Gensim](https://radimrehurek.com/gensim/) | [pmdarima](https://alkaline-ml.com/pmdarima/) | [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) | [Matplotlib](https://matplotlib.org/) |
+| [scikit-learn](https://scikit-learn.org/) | [FastText](https://fasttext.cc/) | | [Accelerate](https://huggingface.co/accelerate) | [SciPy](https://scipy.org/) |
 
-</td>
-<td align="center" width="20%">
-
-**🤗 NLP**
-<br/>
-<img src="https://img.shields.io/badge/Transformers-FFD21E?style=flat&logo=huggingface&logoColor=black"/>
-<img src="https://img.shields.io/badge/NLTK-154F3C?style=flat"/>
-<img src="https://img.shields.io/badge/Gensim-2980B9?style=flat"/>
-<img src="https://img.shields.io/badge/FastText-0866FF?style=flat"/>
-
-</td>
-<td align="center" width="20%">
-
-**📈 Time Series**
-<br/>
-<img src="https://img.shields.io/badge/NeuralForecast-4B32C3?style=flat"/>
-<img src="https://img.shields.io/badge/statsmodels-3E7CB1?style=flat"/>
-<img src="https://img.shields.io/badge/pmdarima-008080?style=flat"/>
-
-</td>
-<td align="center" width="20%">
-
-**💰 FinLLM**
-<br/>
-<img src="https://img.shields.io/badge/PEFT-FF9900?style=flat"/>
-<img src="https://img.shields.io/badge/LoRA-00BFFF?style=flat"/>
-<img src="https://img.shields.io/badge/bitsandbytes-9B59B6?style=flat"/>
-
-</td>
-<td align="center" width="20%">
-
-**📊 Data**
-<br/>
-<img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white"/>
-<img src="https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white"/>
-<img src="https://img.shields.io/badge/Matplotlib-11557C?style=flat"/>
-
-</td>
-</tr>
-</table>
 </div>
 
 ---
