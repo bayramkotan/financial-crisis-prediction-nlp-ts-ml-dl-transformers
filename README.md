@@ -13,10 +13,6 @@
 </h1>
 
 <p align="center">
-  <img src="assets/ai_finance_banner.png" alt="AI in Finance" width="600"/>
-</p>
-
-<p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/TensorFlow-2.15-FF6F00?style=flat-square&logo=tensorflow&logoColor=white"/>
   <img src="https://img.shields.io/badge/PyTorch-2.1-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
