@@ -451,12 +451,13 @@ pip install pandas numpy scipy matplotlib seaborn scikit-learn tensorflow torch 
 | | Component | Details |
 |:--:|:----------|:--------|
 | ☁️ | **Platform** | Google Colab Pro+ |
-| 🎮 | **GPU** | NVIDIA A100 (40GB VRAM) |
+| 🎮 | **GPU** | NVIDIA A100 (80GB VRAM) |
+| 🧠 | **RAM** | 168 GB System Memory |
 | 🐍 | **Python** | 3.10+ |
-| 🧠 | **TensorFlow** | 2.15.0 |
-| 🔥 | **PyTorch** | 2.1.0 + CUDA 12.1 |
+| 🔥 | **TensorFlow** | 2.15.0 |
+| ⚡ | **PyTorch** | 2.1.0 + CUDA 12.1 |
 | 🤗 | **Transformers** | 4.36.0 |
-| ⚡ | **NeuralForecast** | 1.7.0 |
+| 📈 | **NeuralForecast** | 1.7.0 |
 
 </div>
 
