@@ -396,31 +396,124 @@ pip install -r requirements.txt
 
 ### 🔧 Requirements
 
-```
-tensorflow>=2.15
-torch>=2.0
-transformers>=4.30
-neuralforecast>=1.6
-scikit-learn>=1.3
-pandas>=2.0
-numpy>=1.24
-yfinance>=0.2
-gensim>=4.3
+<details>
+<summary>📦 Click to expand full requirements</summary>
+
+| Category | Package | Version | Description |
+|:---------|:--------|:--------|:------------|
+| **Core** | [pandas](https://pandas.pydata.org/) | ≥2.0 | Data manipulation |
+| | [numpy](https://numpy.org/) | ≥1.24 | Numerical computing |
+| | [scipy](https://scipy.org/) | ≥1.10 | Scientific computing |
+| | [matplotlib](https://matplotlib.org/) | ≥3.7 | Visualization |
+| | [seaborn](https://seaborn.pydata.org/) | ≥0.12 | Statistical visualization |
+| | [openpyxl](https://openpyxl.readthedocs.io/) | ≥3.1 | Excel I/O |
+| **ML** | [scikit-learn](https://scikit-learn.org/) | ≥1.3 | Machine learning |
+| | [scikeras](https://github.com/adriangb/scikeras) | ≥0.13 | Keras sklearn wrapper |
+| **Deep Learning** | [tensorflow](https://tensorflow.org/) | ≥2.15 | Deep learning framework |
+| | [keras](https://keras.io/) | ≥2.15 | High-level DL API |
+| | [torch](https://pytorch.org/) | ≥2.0 | Deep learning framework |
+| | [pytorch-lightning](https://lightning.ai/) | ≥2.0 | PyTorch training |
+| **Time Series** | [statsmodels](https://www.statsmodels.org/) | ≥0.14 | Statistical models |
+| | [pmdarima](https://alkaline-ml.com/pmdarima/) | ≥2.0 | Auto ARIMA |
+| | [neuralforecast](https://nixtla.github.io/neuralforecast/) | ≥1.7 | Neural forecasting |
+| **NLP** | [transformers](https://huggingface.co/transformers/) | ≥4.36 | 🤗 Transformers |
+| | [sentence-transformers](https://www.sbert.net/) | ≥2.2 | Sentence embeddings |
+| | [gensim](https://radimrehurek.com/gensim/) | ≥4.3 | Word2Vec, Doc2Vec |
+| | [fasttext](https://fasttext.cc/) | ≥0.9 | Fast text classifier |
+| | [nltk](https://www.nltk.org/) | ≥3.8 | NLP toolkit |
+| | [tensorflow-hub](https://tfhub.dev/) | ≥0.15 | TF model hub |
+| **FinLLM** | [peft](https://github.com/huggingface/peft) | ≥0.7 | Parameter-efficient FT |
+| | [accelerate](https://huggingface.co/accelerate) | ≥0.25 | 🤗 Training acceleration |
+| | [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) | ≥0.42 | 8-bit optimizers |
+| | [datasets](https://huggingface.co/datasets) | ≥2.14 | 🤗 Datasets |
+| | [sentencepiece](https://github.com/google/sentencepiece) | ≥0.1 | Tokenization |
+| **Data Collection** | [gnews](https://github.com/ranahaani/GNews) | ≥0.3 | Google News API |
+| | [newsapi-python](https://newsapi.org/) | ≥0.2 | News API client |
+| | [requests](https://requests.readthedocs.io/) | ≥2.31 | HTTP library |
+| | [beautifulsoup4](https://www.crummy.com/software/BeautifulSoup/) | ≥4.12 | Web scraping |
+| | [deep-translator](https://github.com/nidhaloff/deep-translator) | ≥1.11 | Translation |
+| **Utilities** | [tqdm](https://tqdm.github.io/) | ≥4.66 | Progress bars |
+| | [inflect](https://github.com/jaraco/inflect) | ≥7.0 | Number to words |
+
+</details>
+
+**Quick Install:**
+```bash
+pip install pandas numpy scipy matplotlib seaborn scikit-learn tensorflow torch transformers neuralforecast statsmodels gensim peft accelerate
 ```
 
 ---
 
-## 🖥️ Environment
+## 🖥️ Development Environment
 
 <div align="center">
 
-| Component | Specification |
-|:----------|:-------------|
-| **Platform** | Google Colab Pro |
-| **GPU** | NVIDIA A100 (40GB) |
-| **Python** | 3.10+ |
-| **Framework** | TensorFlow 2.15 / PyTorch 2.0 |
+| | Component | Details |
+|:--:|:----------|:--------|
+| ☁️ | **Platform** | Google Colab Pro+ |
+| 🎮 | **GPU** | NVIDIA A100 (40GB VRAM) |
+| 🐍 | **Python** | 3.10+ |
+| 🧠 | **TensorFlow** | 2.15.0 |
+| 🔥 | **PyTorch** | 2.1.0 + CUDA 12.1 |
+| 🤗 | **Transformers** | 4.36.0 |
+| ⚡ | **NeuralForecast** | 1.7.0 |
 
+</div>
+
+### 📚 Key Libraries by Category
+
+<div align="center">
+<table>
+<tr>
+<td align="center" width="20%">
+
+**🔬 ML/DL**
+<br/>
+<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white"/>
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white"/>
+<img src="https://img.shields.io/badge/Keras-D00000?style=flat&logo=keras&logoColor=white"/>
+<img src="https://img.shields.io/badge/sklearn-F7931E?style=flat&logo=scikit-learn&logoColor=white"/>
+
+</td>
+<td align="center" width="20%">
+
+**🤗 NLP**
+<br/>
+<img src="https://img.shields.io/badge/Transformers-FFD21E?style=flat&logo=huggingface&logoColor=black"/>
+<img src="https://img.shields.io/badge/NLTK-154F3C?style=flat"/>
+<img src="https://img.shields.io/badge/Gensim-2980B9?style=flat"/>
+<img src="https://img.shields.io/badge/FastText-0866FF?style=flat"/>
+
+</td>
+<td align="center" width="20%">
+
+**📈 Time Series**
+<br/>
+<img src="https://img.shields.io/badge/NeuralForecast-4B32C3?style=flat"/>
+<img src="https://img.shields.io/badge/statsmodels-3E7CB1?style=flat"/>
+<img src="https://img.shields.io/badge/pmdarima-008080?style=flat"/>
+
+</td>
+<td align="center" width="20%">
+
+**💰 FinLLM**
+<br/>
+<img src="https://img.shields.io/badge/PEFT-FF9900?style=flat"/>
+<img src="https://img.shields.io/badge/LoRA-00BFFF?style=flat"/>
+<img src="https://img.shields.io/badge/bitsandbytes-9B59B6?style=flat"/>
+
+</td>
+<td align="center" width="20%">
+
+**📊 Data**
+<br/>
+<img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white"/>
+<img src="https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white"/>
+<img src="https://img.shields.io/badge/Matplotlib-11557C?style=flat"/>
+
+</td>
+</tr>
+</table>
 </div>
 
 ---
