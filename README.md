@@ -318,38 +318,36 @@ Fine-tuned with LoRA:
 
 ## 🏗️ Architecture
 
-<div align="center">
-
+```mermaid
+flowchart TB
+    subgraph INPUT["📥 DATA SOURCES"]
+        A["📰 NEWS<br/>782 articles"]
+        B["📈 PRICE<br/>BIST50 Index"]
+        C["📊 MACRO<br/>Inflation"]
+    end
+    
+    subgraph PROCESS["⚙️ PROCESSING LAYERS"]
+        D["🔤 NLP LAYER<br/>Word2Vec • ALBERT • GloVe"]
+        E["📉 FORECAST LAYER<br/>Autoformer • LSTM/RNN • Linear Reg"]
+        F["🤖 ENSEMBLE LAYER<br/>FinBERT • FinGPT • FinT5"]
+    end
+    
+    subgraph OUTPUT["📤 OUTPUT"]
+        G["🚨 EARLY WARNING SIGNAL<br/>Sentiment + Forecast + Technical Analysis"]
+    end
+    
+    A --> D
+    B --> E
+    C --> F
+    D --> G
+    E --> G
+    F --> G
+    
+    style INPUT fill:#e1f5fe
+    style PROCESS fill:#fff3e0
+    style OUTPUT fill:#ffebee
+    style G fill:#ef5350,color:#fff
 ```
-                    ┌──────────────────────────────────────────┐
-                    │      EARLY WARNING SYSTEM ARCHITECTURE    │
-                    └──────────────────────────────────────────┘
-                                        │
-          ┌─────────────────────────────┼─────────────────────────────┐
-          ▼                             ▼                             ▼
-   ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
-   │  📰 NEWS    │              │  📈 PRICE   │              │  📊 MACRO   │
-   │ 782 articles│              │ BIST50 Index│              │ Inflation   │
-   └──────┬──────┘              └──────┬──────┘              └──────┬──────┘
-          │                            │                            │
-          ▼                            ▼                            ▼
-   ┌─────────────┐              ┌─────────────┐              ┌─────────────┐
-   │ NLP LAYER   │              │  FORECAST   │              │  ENSEMBLE   │
-   │             │              │   LAYER     │              │   LAYER     │
-   │ • Word2Vec  │              │ • Autoformer│              │ • FinBERT   │
-   │ • ALBERT    │              │ • LSTM/RNN  │              │ • FinGPT    │
-   │ • GloVe     │              │ • Linear Reg│              │ • FinT5     │
-   └──────┬──────┘              └──────┬──────┘              └──────┬──────┘
-          │                            │                            │
-          └─────────────────────────────┼─────────────────────────────┘
-                                        ▼
-                    ┌──────────────────────────────────────────┐
-                    │        🚨 EARLY WARNING SIGNAL           │
-                    │  Sentiment + Forecast + Technical Analysis│
-                    └──────────────────────────────────────────┘
-```
-
-</div>
 
 ---
 
