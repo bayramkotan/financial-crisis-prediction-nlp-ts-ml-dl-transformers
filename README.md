@@ -55,10 +55,10 @@ This repository presents a **multi-layered early warning system** for the **2018
 
 ### 🏆 Best Results
 
-| Scenario | Best Model | RMSE |
+| Scenario | Best Model | MAPE |
 |:---------|:-----------|-----:|
-| 📈 Single Stock (21d) | **Autoformer** | **8.54** |
-| 📊 Multi-Stock (21d) | **FEDformer** | **0.29** |
+| 📈 Single Stock (21d) | **Autoformer** | **0.77%** |
+| 📊 Multi-Stock (21d) | **FinLLM Ensemble** | **1.84%** |
 | 📰 NLP Correlation | **Word2Vec** | **r=0.87** |
 
 </td>
@@ -100,14 +100,14 @@ This repository presents a **multi-layered early warning system** for the **2018
 | Time Series | AR Fark Alma | 13.35 |
 | Deep Learning | RNN | 13.54 |
 
-**Multi-Stock (21-Day) - RMSE by Category:**
+**Multi-Stock (21-Day) - Best by Category (MAPE %):**
 
-| Category | Best Model | RMSE |
+| Category | Best Model | MAPE |
 |:---------|:-----------|-----:|
-| 🏆 Transformer TS | FEDformer | 0.29 |
-| Financial LLM | Ensemble | 0.32 |
-| Deep Learning | CNN | 0.75 |
-| Machine Learning | Linear Reg | 0.77 |
+| 🏆 Financial LLM | Ensemble | 1.84% |
+| Transformer TS | FEDformer | 3.83% |
+| Deep Learning | CNN | 7.10% |
+| Machine Learning | Linear Reg | 7.53% |
 
 </div>
 
