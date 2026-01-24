@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/D%C3%BCzce_University_logo.svg/200px-D%C3%BCzce_University_logo.svg.png" alt="Düzce University Logo" width="120"/>
+  <img src="assets/duzce_logo.png" alt="Düzce University Logo" height="80"/>
 </p>
 
 <p align="center">
@@ -11,6 +11,10 @@
   <br/>
   <sub>Predicting the 2018 Turkish Currency Crisis using NLP, Machine Learning & Deep Learning</sub>
 </h1>
+
+<p align="center">
+  <img src="assets/ai_finance_banner.png" alt="AI in Finance" width="600"/>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white"/>
@@ -31,7 +35,7 @@
   <a href="#-research-motivation">Motivation</a> •
   <a href="#-key-findings">Key Findings</a> •
   <a href="#-models--methods">Models</a> •
-  <a href="#-results">Results</a> •
+  <a href="#-detailed-results">Results</a> •
   <a href="#-installation">Installation</a> •
   <a href="#-citation">Citation</a>
 </p>
@@ -111,42 +115,135 @@ Financial crises cause devastating effects on economies and societies:
 
 | Discovery | Details |
 |:----------|:--------|
-| 🥇 **Best Predictor** | Autoformer achieved **0.77% MAPE** for 21-day stock forecasting |
+| 🥇 **Best Short-Term** | TimesNet achieved **0.0484% MAPE** for 1-day forecast (single stock) |
+| 🥈 **Best Medium-Term** | AR Fark Alma achieved **0.52% MAPE** for 10-day forecast (single stock) |
+| 🥉 **Best Long-Term** | Autoformer achieved **0.77% MAPE** for 21-day forecast (single stock) |
 | 📰 **NLP Power** | Word2Vec predicted inflation **3 months in advance** with r=0.87 |
-| 🤖 **FinLLM Success** | Ensemble of FinBERT+FinGPT+FinT5 achieved **1.84% MAPE** on multi-stock |
-| 📈 **Surprising Winner** | Linear Regression ranked #2, beating complex deep learning models |
-| ⚠️ **Crisis Signal** | Sentiment analysis detected negative patterns weeks before the crash |
+| 🤖 **FinLLM Success** | Ensemble achieved **1.41-1.84% MAPE** across all periods (multi-stock) |
 
 </div>
 
-### 📊 Model Performance Summary
-
-#### Single Stock Analysis (BIST50 Index, 250 samples, 21-day forecast)
+### 📊 Dataset Summary
 
 <div align="center">
 
-| Rank | Model | Category | RMSE | R² | MAPE |
-|:----:|:------|:---------|-----:|:--:|-----:|
-| 🥇 | **Autoformer** | Transformer TS | **8.54** | **+0.53** | **0.77%** |
-| 🥈 | Linear Regression | Machine Learning | 9.36 | +0.43 | 0.85% |
-| 🥉 | Informer | Transformer TS | 12.12 | +0.05 | 1.11% |
-| 4 | DeepAR | Transformer TS | 12.83 | -0.07 | 1.18% |
-| 5 | FinLLM Ensemble | Financial LLM | 13.19 | -0.13 | 1.32% |
-| 6 | AR Fark Alma | Time Series | 13.35 | -0.16 | 1.10% |
-| 7 | RNN | Deep Learning | 13.54 | -0.19 | 1.24% |
+| Scenario | Description | Samples | Stocks |
+|:---------|:------------|--------:|-------:|
+| **Single Stock (Limited Data)** | Single stock prediction | 250 | 1 |
+| **Multi-Stock (Large Data)** | Multiple stocks prediction | 12,500 | 50 |
 
 </div>
 
-#### Multi-Stock Analysis (50 stocks × 250 days = 12,500 samples, 21-day forecast)
+---
+
+## 📈 Detailed Results
+
+### 🎯 Single Stock Scenario - Best Models by Period (MAPE)
 
 <div align="center">
 
-| Rank | Model | Category | RMSE | MAPE |
-|:----:|:------|:---------|-----:|-----:|
-| 🥇 | **CNN** | Deep Learning | **0.75** | **7.10%** |
-| 🥈 | Linear Regression | Machine Learning | 0.77 | 7.53% |
-| 🥉 | LSTM | Deep Learning | 0.81 | 7.89% |
-| 4 | FinLLM Ensemble | Financial LLM | - | 1.84% |
+| Period | Model | Category | MAPE (%) | RMSE | MAE | R² |
+|:------:|:------|:---------|:--------:|-----:|----:|:--:|
+| **1 Day** | TimesNet | Transformer | **0.0484** | 0.44 | 0.44 | - |
+| | Linear Regression | ML | 0.07 | 0.64 | 0.64 | - |
+| | RNN | Deep Learning | 0.07 | 0.62 | 0.62 | - |
+| **10 Day** | AR Fark Alma | Time Series | **0.52** | 5.99 | 4.66 | -0.07 |
+| | Linear Regression | ML | 0.75 | 7.69 | 6.60 | -0.75 |
+| | RNN | Deep Learning | 1.10 | 12.22 | 9.69 | -3.43 |
+| **21 Day** | Autoformer | Transformer | **0.77** | 8.54 | 6.89 | +0.53 |
+| | Linear Regression | ML | 0.85 | 9.36 | 7.54 | +0.43 |
+| | AR Fark Alma | Time Series | 1.10 | 13.35 | 9.85 | -0.16 |
+
+</div>
+
+### 📊 Single Stock - Full 21-Day Leaderboard
+
+<div align="center">
+
+| Rank | Model | Category | MAPE (%) | RMSE | R² |
+|:----:|:------|:---------|:--------:|-----:|:--:|
+| 🥇 | **Autoformer** | Transformer | **0.77** | 8.54 | +0.53 |
+| 🥈 | Linear Regression | ML | 0.85 | 9.36 | +0.43 |
+| 🥉 | AR Fark Alma | Time Series | 1.10 | 13.35 | -0.16 |
+| 4 | Informer | Transformer | 1.11 | 12.12 | +0.05 |
+| 5 | DeepAR | Transformer | 1.18 | 12.83 | -0.07 |
+| 6 | RNN | Deep Learning | 1.24 | 13.54 | -0.19 |
+| 7 | FinLLM Ensemble | Financial LLM | 1.32 | 13.19 | -0.13 |
+| 8 | Random Forest | ML | 1.47 | 14.76 | -0.42 |
+| 9 | SVM | ML | 1.52 | 16.24 | -0.71 |
+| 10 | TimesNet | Transformer | 1.81 | 19.49 | -1.47 |
+| 11 | TSMixer | Transformer | 1.87 | 19.38 | -1.44 |
+| 12 | LSTM | Deep Learning | 1.98 | 20.25 | -1.67 |
+| 13 | KNN | ML | 2.03 | 20.87 | -1.83 |
+| 14 | CNN | Deep Learning | 2.14 | 21.06 | -1.88 |
+| 15 | Decision Tree | ML | 2.14 | 20.87 | -1.83 |
+| 16 | MLP | Deep Learning | 4.88 | 46.07 | -12.80 |
+
+</div>
+
+### 🎯 Multi-Stock Scenario - Best Models by Period (MAPE)
+
+<div align="center">
+
+| Period | Model | Category | MAPE (%) | RMSE | R² |
+|:------:|:------|:---------|:--------:|-----:|:--:|
+| **1 Day** | Ensemble (FinGPT+Tech+Sent) | Financial LLM | **1.41** | 0.15 | 0.00 |
+| | RNN | Deep Learning | 1.49 | 0.19 | +0.43 |
+| | LSTM | Deep Learning | 1.52 | 0.19 | +0.40 |
+| **10 Day** | Ensemble (FinGPT+Tech+Sent) | Financial LLM | **1.65** | 0.30 | -1.95 |
+| | FinGPT (Multi-Stock) | Financial LLM | 2.89 | 0.29 | -6.08 |
+| | TSMixer | Transformer | 3.35 | 0.29 | -1.62 |
+| **21 Day** | Ensemble (FinGPT+Tech+Sent) | Financial LLM | **1.84** | 0.32 | +0.21 |
+| | FinGPT (Multi-Stock) | Financial LLM | 3.04 | 0.33 | -0.72 |
+| | FEDformer | Transformer | 3.83 | 0.29 | -1.61 |
+
+</div>
+
+### 📊 Multi-Stock - Full 21-Day Leaderboard
+
+<div align="center">
+
+| Rank | Model | Category | MAPE (%) | RMSE | R² |
+|:----:|:------|:---------|:--------:|-----:|:--:|
+| 🥇 | **Ensemble (FinGPT+Tech+Sent)** | Financial LLM | **1.84** | 0.32 | +0.21 |
+| 🥈 | FinGPT (Multi-Stock) | Financial LLM | 3.04 | 0.33 | -0.72 |
+| 🥉 | FEDformer | Transformer | 3.83 | 0.29 | -1.61 |
+| 4 | TSMixer | Transformer | 3.86 | 0.30 | -1.62 |
+| 5 | Informer | Transformer | 4.35 | 0.35 | -2.35 |
+| 6 | TimesNet | Transformer | 4.60 | 0.35 | -2.87 |
+| 7 | DeepAR | Transformer | 4.73 | 0.33 | -2.68 |
+| 8 | TFT | Transformer | 5.39 | 0.44 | -5.86 |
+| 9 | Autoformer | Transformer | 5.75 | 0.43 | -6.36 |
+| 10 | CNN | Deep Learning | 7.10 | 0.75 | -8.08 |
+| 11 | Linear Regression | ML | 7.53 | 0.77 | -10.93 |
+| 12 | MLP | Deep Learning | 7.88 | 0.85 | -9.50 |
+| 13 | LSTM | Deep Learning | 7.97 | 0.81 | -10.21 |
+| 14 | RNN | Deep Learning | 8.46 | 0.80 | -11.52 |
+| 15 | Random Forest | ML | 8.58 | 0.81 | -13.33 |
+
+</div>
+
+### 📊 Category Average Performance (MAPE %)
+
+<div align="center">
+
+#### Single Stock Scenario
+
+| Category | 1 Day | 10 Day | 21 Day | Average |
+|:---------|------:|-------:|-------:|--------:|
+| **Transformer** | 0.61 | 1.81 | 2.01 | 1.48 |
+| **Financial LLM** | 0.70 | 1.46 | 1.32 | 1.01 |
+| **Machine Learning** | 1.37 | 1.59 | 1.72 | 1.56 |
+| **Deep Learning** | 1.71 | 2.41 | 2.56 | 2.23 |
+
+#### Multi-Stock Scenario
+
+| Category | 1 Day | 10 Day | 21 Day | Average |
+|:---------|------:|-------:|-------:|--------:|
+| **Financial LLM** | 1.81 | 2.27 | 2.44 | **2.17** |
+| **Transformer** | 1.98 | 3.91 | 4.64 | 3.51 |
+| **Deep Learning** | 2.04 | 4.98 | 7.85 | 4.96 |
+| **Machine Learning** | 4.66 | 8.40 | 10.95 | 8.00 |
 
 </div>
 
@@ -156,18 +253,24 @@ Our sentiment analysis models detected crisis signals **before** the actual mark
 
 <div align="center">
 
-| Model | Best Lag | Correlation (r) | p-value | Interpretation |
-|:------|:--------:|:---------------:|:-------:|:---------------|
-| 🥇 **Word2Vec** | 3 months | **0.8715** | 0.0022 | Strong predictive signal |
-| 🥈 Word2Vec | 2 months | 0.8621 | 0.0013 | Confirmed lead indicator |
-| 🥉 ALBERT | 3 months | 0.8058 | 0.0087 | Transformer NLP works |
-| 4 | GloVe | 2 months | 0.8025 | 0.0052 | Static embeddings effective |
-| 5 | USE | 3 months | 0.7443 | 0.0214 | Universal encoder useful |
-| 6 | FastText | 0 months | 0.6800 | 0.0150 | Concurrent indicator |
+| Model | Lag (Months) | Correlation (r) | p-value | Significance |
+|:------|:------------:|:---------------:|:-------:|:-------------|
+| 🥇 **Word2Vec** | 3 | **0.8715** | 0.0022 | Very Strong |
+| 🥈 Word2Vec | 2 | 0.8621 | 0.0013 | Very Strong |
+| 🥉 Kelime_Sayma | 1 | 0.8541 | 0.0008 | Very Strong |
+| 4 | Kelime_Sayma | 2 | 0.8312 | 0.0029 | Very Strong |
+| 5 | Word2Vec | 1 | 0.8292 | 0.0016 | Very Strong |
+| 6 | ALBERT | 3 | 0.8058 | 0.0087 | Very Strong |
+| 7 | GloVe | 2 | 0.8025 | 0.0052 | Very Strong |
+| 8 | GloVe | 3 | 0.7891 | 0.0115 | Strong |
+| 9 | USE | 3 | 0.7443 | 0.0214 | Strong |
+| 10 | Word2Vec | 0 | 0.7383 | 0.0061 | Strong |
+| 11 | GloVe | 1 | 0.7117 | 0.0140 | Strong |
+| 12 | FastText | 0 | 0.6800 | 0.0150 | Strong |
 
 </div>
 
-> 💡 **Key Insight:** News sentiment became increasingly negative **3 months before** the August 2018 crisis peak, providing a potential early warning signal.
+> 💡 **Key Insight:** Word2Vec and GloVe models show strongest correlations. News sentiment FOLLOWS market movements with ~3 month lag, suggesting sentiment reflects rather than predicts market conditions.
 
 ---
 
@@ -273,66 +376,6 @@ lora_config = {
 
 ---
 
-## 📊 Detailed Results
-
-### 📈 Transformer TS Models - Detailed Comparison (21-Day, Single Stock)
-
-<div align="center">
-
-| Model | RMSE | MAE | R² | MAPE | Dir. Acc. | Key Feature |
-|:------|-----:|----:|:--:|-----:|:---------:|:------------|
-| 🥇 **Autoformer** | **8.54** | 6.89 | **+0.53** | **0.77%** | 60.0% | Auto-Correlation |
-| 🥈 Informer | 12.12 | 9.81 | +0.05 | 1.11% | 43.3% | ProbSparse Attention |
-| 🥉 DeepAR | 12.83 | 10.48 | -0.07 | 1.18% | 53.3% | Probabilistic |
-| 4 | TimesNet | 13.66 | 11.04 | -0.21 | 1.30% | 40.0% | 2D Variation |
-| 5 | FEDformer | 15.73 | 12.58 | -0.61 | 1.45% | 50.0% | Frequency Domain |
-| 6 | TFT | 16.64 | 13.30 | -0.80 | 1.47% | 46.7% | Temporal Fusion |
-| 7 | TSMixer | 18.64 | 14.96 | -1.26 | 1.76% | 46.7% | MLP Mixing |
-
-</div>
-
-### 🤖 Deep Learning Models - Detailed Comparison (21-Day, Single Stock)
-
-<div align="center">
-
-| Model | RMSE | MAE | R² | MAPE | Dir. Acc. |
-|:------|-----:|----:|:--:|-----:|:---------:|
-| 🥇 **RNN** | **13.54** | 10.80 | **-0.19** | **1.24%** | 43.3% |
-| 🥈 CNN | 14.41 | 11.38 | -0.35 | 1.29% | 50.0% |
-| 🥉 MLP | 16.09 | 12.79 | -0.68 | 1.46% | 43.3% |
-| 4 | LSTM | 17.05 | 13.63 | -0.89 | 1.55% | 50.0% |
-
-</div>
-
-### 💰 Financial LLM Models - Detailed Comparison (21-Day, Single Stock)
-
-<div align="center">
-
-| Model | RMSE | MAE | R² | MAPE | Dir. Acc. |
-|:------|-----:|----:|:--:|-----:|:---------:|
-| 🥇 **Ensemble** | **13.19** | 10.35 | **-0.13** | **1.32%** | 56.7% |
-| 🥈 FinBERT | 13.37 | 10.49 | -0.16 | 1.34% | 53.3% |
-| 🥉 FinT5 | 14.01 | 11.06 | -0.27 | 1.41% | 50.0% |
-| 4 | FinGPT | 14.27 | 11.27 | -0.32 | 1.44% | 53.3% |
-
-</div>
-
-### 📊 Category Winners Summary
-
-<div align="center">
-
-| Category | Best Model | RMSE | MAPE | Key Strength |
-|:---------|:-----------|-----:|-----:|:-------------|
-| 🏆 **Transformer TS** | Autoformer | 8.54 | 0.77% | Best overall performance |
-| 🥈 **Machine Learning** | Linear Regression | 9.36 | 0.85% | Simple yet powerful |
-| 🥉 **Financial LLM** | Ensemble | 13.19 | 1.32% | Domain knowledge |
-| 4 | **Time Series** | AR Fark Alma | 13.35 | 1.10% | Classical approach |
-| 5 | **Deep Learning** | RNN | 13.54 | 1.24% | Sequence modeling |
-
-</div>
-
----
-
 ## 🏗️ System Architecture
 
 ```mermaid
@@ -399,8 +442,12 @@ flowchart TB
 │   ├── 📄 news_corpus.csv                # News articles
 │   └── 📄 README.md                      # Data documentation
 │
+├── 📂 assets/                             # Images and media
+│   ├── 🖼️ ai_finance_banner.png          # AI Finance banner image
+│   └── 🖼️ duzce_logo.png                 # Düzce University logo
+│
 ├── 📂 results/                            # Output files
-│   ├── 📊 model_comparison.xlsx          # All model results
+│   ├── 📊 Model_Karsilastirma_Raporu.xlsx # All model results
 │   └── 📊 nlp_correlation.xlsx           # NLP analysis results
 │
 ├── 📄 requirements.txt                    # Python dependencies
@@ -450,18 +497,8 @@ pip install -r requirements.txt
 | **ML** | [scikit-learn](https://scikit-learn.org/) | 1.3.0 | ML algorithms |
 | **Data** | [Pandas](https://pandas.pydata.org/) | 2.0.0 | Data manipulation |
 | | [NumPy](https://numpy.org/) | 1.24.0 | Numerical computing |
-| **Visualization** | [Matplotlib](https://matplotlib.org/) | 3.7.0 | Plotting |
-| | [Seaborn](https://seaborn.pydata.org/) | 0.12.0 | Statistical plots |
 
 </div>
-
-### Quick Install
-
-```bash
-pip install tensorflow==2.15.0 keras==3.0 torch>=2.1.0 transformers==4.35.0 \
-    neuralforecast==1.7.0 statsmodels==0.14.0 scikit-learn==1.3.0 \
-    gensim==4.3.0 pandas==2.0.0 numpy==1.24.0 matplotlib==3.7.0 seaborn==0.12.0
-```
 
 ---
 
