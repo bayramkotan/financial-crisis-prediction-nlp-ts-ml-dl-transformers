@@ -45,7 +45,7 @@
 ## 📖 About the Project
 
 <p align="center">
-  <img src="assets/finance-ai.jpeg" alt="AI in Finance" width="500"/>
+  <img src="assets/finance_ai.webp" alt="AI in Finance" width="700"/>
 </p>
 
 ### The 2018 Turkish Currency Crisis
