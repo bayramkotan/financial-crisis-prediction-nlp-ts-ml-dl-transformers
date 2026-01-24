@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/D%C3%BCzce_University_logo.svg/200px-D%C3%BCzce_University_logo.svg.png" alt="Düzce University Logo" width="120"/>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/🇹🇷_BIST50-Financial_Crisis_Prediction-red?style=for-the-badge&labelColor=black" alt="BIST50"/>
 </p>
 
@@ -12,7 +16,7 @@
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/TensorFlow-2.15-FF6F00?style=flat-square&logo=tensorflow&logoColor=white"/>
   <img src="https://img.shields.io/badge/PyTorch-2.1-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
-  <img src="https://img.shields.io/badge/🤗_Transformers-4.36-yellow?style=flat-square"/>
+  <img src="https://img.shields.io/badge/🤗_Transformers-4.35-yellow?style=flat-square"/>
   <img src="https://img.shields.io/badge/NeuralForecast-1.7-green?style=flat-square"/>
   <img src="https://img.shields.io/badge/License-MIT-success?style=flat-square"/>
 </p>
@@ -28,7 +32,7 @@
   <a href="#-key-findings">Key Findings</a> •
   <a href="#-models--methods">Models</a> •
   <a href="#-results">Results</a> •
-  <a href="#%EF%B8%8F-installation">Installation</a> •
+  <a href="#-installation">Installation</a> •
   <a href="#-citation">Citation</a>
 </p>
 
@@ -55,6 +59,8 @@ This thesis presents a **comprehensive multi-model framework** that analyzes:
 
 ### What Makes This Research Unique?
 
+<div align="center">
+
 | Aspect | Description |
 |:-------|:------------|
 | 🔬 **Comprehensive Comparison** | 35+ models across 6 categories (NLP, Time Series, ML, DL, Transformer, FinLLM) |
@@ -63,6 +69,8 @@ This thesis presents a **comprehensive multi-model framework** that analyzes:
 | 🤖 **State-of-the-Art Models** | Includes latest Transformer architectures (Autoformer, Informer, FEDformer) |
 | 💰 **Financial LLMs** | Fine-tuned FinBERT, FinGPT, FinT5 with LoRA for Turkish market |
 | 📊 **Dual Scenario Analysis** | Both single-stock (250 samples) and multi-stock (12,500 samples) experiments |
+
+</div>
 
 ---
 
@@ -81,6 +89,8 @@ Financial crises cause devastating effects on economies and societies:
 
 ### The Gap in Literature
 
+<div align="center">
+
 | Challenge | Our Solution |
 |:----------|:-------------|
 | Most studies focus on developed markets | ✅ Focus on emerging market (Turkey) |
@@ -88,6 +98,8 @@ Financial crises cause devastating effects on economies and societies:
 | Limited NLP integration | ✅ 7 NLP models for sentiment analysis |
 | Lack of modern architectures | ✅ State-of-the-art Transformers & FinLLMs |
 | Short prediction horizons | ✅ 1-day, 10-day, and 21-day forecasts |
+
+</div>
 
 ---
 
@@ -109,9 +121,9 @@ Financial crises cause devastating effects on economies and societies:
 
 ### 📊 Model Performance Summary
 
-<div align="center">
-
 #### Single Stock Analysis (BIST50 Index, 250 samples, 21-day forecast)
+
+<div align="center">
 
 | Rank | Model | Category | RMSE | R² | MAPE |
 |:----:|:------|:---------|-----:|:--:|-----:|
@@ -123,14 +135,18 @@ Financial crises cause devastating effects on economies and societies:
 | 6 | AR Fark Alma | Time Series | 13.35 | -0.16 | 1.10% |
 | 7 | RNN | Deep Learning | 13.54 | -0.19 | 1.24% |
 
+</div>
+
 #### Multi-Stock Analysis (50 stocks × 250 days = 12,500 samples, 21-day forecast)
 
-| Rank | Model | Category | MAPE |
-|:----:|:------|:---------|-----:|
-| 🥇 | **FinLLM Ensemble** | Financial LLM | **1.84%** |
-| 🥈 | FEDformer | Transformer TS | 3.83% |
-| 🥉 | CNN | Deep Learning | 7.10% |
-| 4 | Linear Regression | Machine Learning | 7.53% |
+<div align="center">
+
+| Rank | Model | Category | RMSE | MAPE |
+|:----:|:------|:---------|-----:|-----:|
+| 🥇 | **CNN** | Deep Learning | **0.75** | **7.10%** |
+| 🥈 | Linear Regression | Machine Learning | 0.77 | 7.53% |
+| 🥉 | LSTM | Deep Learning | 0.81 | 7.89% |
+| 4 | FinLLM Ensemble | Financial LLM | - | 1.84% |
 
 </div>
 
@@ -161,7 +177,7 @@ This research implements and compares **35+ models** across **6 categories**:
 
 ### 📰 NLP Models for Sentiment Analysis
 
-Text embedding models used to convert news articles into numerical representations:
+<div align="center">
 
 | Model | Type | Parameters | Publication | Repository |
 |:------|:-----|:-----------|:------------|:-----------|
@@ -173,9 +189,11 @@ Text embedding models used to convert news articles into numerical representatio
 | [FastText](https://github.com/facebookresearch/fastText) | Subword Embedding | - | Meta 2016 | facebookresearch/fastText |
 | [USE](https://tfhub.dev/google/universal-sentence-encoder/4) | Sentence Encoder | 256M | Google 2018 | tensorflow/hub |
 
+</div>
+
 ### 📈 Time Series Models
 
-Classical statistical methods for financial forecasting:
+<div align="center">
 
 | Model | Description | Library |
 |:------|:------------|:--------|
@@ -184,11 +202,12 @@ Classical statistical methods for financial forecasting:
 | ARMA | AR + MA Combined | [statsmodels](https://github.com/statsmodels/statsmodels) |
 | ARIMA | Integrated ARMA | [statsmodels](https://github.com/statsmodels/statsmodels) |
 | SARIMA | Seasonal ARIMA | [pmdarima](https://github.com/alkaline-ml/pmdarima) |
-| + Variants | Log Transform, Differencing, Smoothing | - |
+
+</div>
 
 ### 🤖 Machine Learning Models
 
-Traditional ML algorithms for regression:
+<div align="center">
 
 | Model | Kernel/Type | Library |
 |:------|:------------|:--------|
@@ -198,9 +217,11 @@ Traditional ML algorithms for regression:
 | Decision Tree | CART | [scikit-learn](https://github.com/scikit-learn/scikit-learn) |
 | KNN | k=5 | [scikit-learn](https://github.com/scikit-learn/scikit-learn) |
 
+</div>
+
 ### 🧬 Deep Learning Models
 
-Neural network architectures:
+<div align="center">
 
 | Model | Architecture | Framework |
 |:------|:-------------|:----------|
@@ -209,9 +230,11 @@ Neural network architectures:
 | CNN | 1D Convolution | [TensorFlow/Keras](https://github.com/tensorflow/tensorflow) |
 | MLP | 3 Hidden Layers | [TensorFlow/Keras](https://github.com/tensorflow/tensorflow) |
 
+</div>
+
 ### ⚡ Transformer Time Series Models
 
-State-of-the-art architectures for time series forecasting:
+<div align="center">
 
 | Model | Key Innovation | Publication | Repository |
 |:------|:---------------|:------------|:-----------|
@@ -223,15 +246,19 @@ State-of-the-art architectures for time series forecasting:
 | [TSMixer](https://github.com/google-research/google-research/tree/master/tsmixer) | MLP-based Mixing | TMLR 2023 | google-research/tsmixer |
 | [DeepAR](https://github.com/awslabs/gluonts) | Probabilistic Forecast | IJoF 2020 | awslabs/gluonts |
 
+</div>
+
 ### 💰 Financial LLMs (Fine-tuned)
 
-Large Language Models specialized for finance:
+<div align="center">
 
 | Model | Base | Fine-tuning | Repository |
 |:------|:-----|:------------|:-----------|
 | [FinBERT](https://github.com/ProsusAI/finBERT) | BERT | Pre-trained on financial text | ProsusAI/finBERT |
 | [FinGPT](https://github.com/AI4Finance-Foundation/FinGPT) | LLaMA | LoRA fine-tuning | AI4Finance-Foundation/FinGPT |
 | [FinT5](https://huggingface.co/SALT-NLP/FLANG-T5) | T5 | Financial instruction tuning | SALT-NLP/FLANG-T5 |
+
+</div>
 
 **LoRA Configuration:**
 ```python
@@ -246,14 +273,14 @@ lora_config = {
 
 ---
 
-## 📊 Results
+## 📊 Detailed Results
 
-### 📈 Transformer TS Models - Detailed Comparison
+### 📈 Transformer TS Models - Detailed Comparison (21-Day, Single Stock)
 
 <div align="center">
 
-| Model | RMSE | MAE | R² | MAPE | Direction Acc. | Key Feature |
-|:------|-----:|----:|:--:|-----:|:--------------:|:------------|
+| Model | RMSE | MAE | R² | MAPE | Dir. Acc. | Key Feature |
+|:------|-----:|----:|:--:|-----:|:---------:|:------------|
 | 🥇 **Autoformer** | **8.54** | 6.89 | **+0.53** | **0.77%** | 60.0% | Auto-Correlation |
 | 🥈 Informer | 12.12 | 9.81 | +0.05 | 1.11% | 43.3% | ProbSparse Attention |
 | 🥉 DeepAR | 12.83 | 10.48 | -0.07 | 1.18% | 53.3% | Probabilistic |
@@ -264,12 +291,12 @@ lora_config = {
 
 </div>
 
-### 🤖 Deep Learning Models - Detailed Comparison
+### 🤖 Deep Learning Models - Detailed Comparison (21-Day, Single Stock)
 
 <div align="center">
 
-| Model | RMSE | MAE | R² | MAPE | Direction Acc. |
-|:------|-----:|----:|:--:|-----:|:--------------:|
+| Model | RMSE | MAE | R² | MAPE | Dir. Acc. |
+|:------|-----:|----:|:--:|-----:|:---------:|
 | 🥇 **RNN** | **13.54** | 10.80 | **-0.19** | **1.24%** | 43.3% |
 | 🥈 CNN | 14.41 | 11.38 | -0.35 | 1.29% | 50.0% |
 | 🥉 MLP | 16.09 | 12.79 | -0.68 | 1.46% | 43.3% |
@@ -277,12 +304,12 @@ lora_config = {
 
 </div>
 
-### 💰 Financial LLM Models - Detailed Comparison
+### 💰 Financial LLM Models - Detailed Comparison (21-Day, Single Stock)
 
 <div align="center">
 
-| Model | RMSE | MAE | R² | MAPE | Direction Acc. |
-|:------|-----:|----:|:--:|-----:|:--------------:|
+| Model | RMSE | MAE | R² | MAPE | Dir. Acc. |
+|:------|-----:|----:|:--:|-----:|:---------:|
 | 🥇 **Ensemble** | **13.19** | 10.35 | **-0.13** | **1.32%** | 56.7% |
 | 🥈 FinBERT | 13.37 | 10.49 | -0.16 | 1.34% | 53.3% |
 | 🥉 FinT5 | 14.01 | 11.06 | -0.27 | 1.41% | 50.0% |
@@ -374,13 +401,7 @@ flowchart TB
 │
 ├── 📂 results/                            # Output files
 │   ├── 📊 model_comparison.xlsx          # All model results
-│   ├── 📊 nlp_correlation.xlsx           # NLP analysis results
-│   └── 📈 figures/                       # Generated plots
-│
-├── 📂 models/                             # Saved model weights
-│   ├── 🤖 finbert_lora/                  # Fine-tuned FinBERT
-│   ├── 🤖 fingpt_lora/                   # Fine-tuned FinGPT
-│   └── 🤖 fint5_lora/                    # Fine-tuned FinT5
+│   └── 📊 nlp_correlation.xlsx           # NLP analysis results
 │
 ├── 📄 requirements.txt                    # Python dependencies
 ├── 📄 LICENSE                            # MIT License
@@ -413,73 +434,40 @@ source venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 
-### 📦 Dependencies
+### 📦 Key Dependencies
 
-<details>
-<summary><b>Click to expand full requirements</b></summary>
+<div align="center">
 
-#### Core Libraries
-| Package | Version | Description | Link |
-|:--------|:--------|:------------|:-----|
-| pandas | ≥2.0 | Data manipulation | [pandas.pydata.org](https://pandas.pydata.org/) |
-| numpy | ≥1.24 | Numerical computing | [numpy.org](https://numpy.org/) |
-| scipy | ≥1.10 | Scientific computing | [scipy.org](https://scipy.org/) |
-| matplotlib | ≥3.7 | Visualization | [matplotlib.org](https://matplotlib.org/) |
-| seaborn | ≥0.12 | Statistical plots | [seaborn.pydata.org](https://seaborn.pydata.org/) |
+| Category | Package | Version | Description |
+|:---------|:--------|:--------|:------------|
+| **Deep Learning** | [TensorFlow](https://tensorflow.org/) | 2.15.0 | DL framework |
+| | [Keras](https://keras.io/) | 3.0 | High-level DL API |
+| | [PyTorch](https://pytorch.org/) | 2.1.0 | DL framework |
+| **Time Series** | [NeuralForecast](https://nixtla.github.io/neuralforecast/) | 1.7.0 | Transformer TS models |
+| | [statsmodels](https://www.statsmodels.org/) | 0.14.0 | Statistical models |
+| **NLP** | [Transformers](https://huggingface.co/transformers/) | 4.35.0 | 🤗 HuggingFace |
+| | [Gensim](https://radimrehurek.com/gensim/) | 4.3.0 | Word2Vec, Doc2Vec |
+| **ML** | [scikit-learn](https://scikit-learn.org/) | 1.3.0 | ML algorithms |
+| **Data** | [Pandas](https://pandas.pydata.org/) | 2.0.0 | Data manipulation |
+| | [NumPy](https://numpy.org/) | 1.24.0 | Numerical computing |
+| **Visualization** | [Matplotlib](https://matplotlib.org/) | 3.7.0 | Plotting |
+| | [Seaborn](https://seaborn.pydata.org/) | 0.12.0 | Statistical plots |
 
-#### Machine Learning
-| Package | Version | Description | Link |
-|:--------|:--------|:------------|:-----|
-| scikit-learn | ≥1.3 | ML algorithms | [scikit-learn.org](https://scikit-learn.org/) |
-| scikeras | ≥0.13 | Keras wrapper | [GitHub](https://github.com/adriangb/scikeras) |
+</div>
 
-#### Deep Learning
-| Package | Version | Description | Link |
-|:--------|:--------|:------------|:-----|
-| tensorflow | ≥2.15 | DL framework | [tensorflow.org](https://tensorflow.org/) |
-| keras | ≥2.15 | High-level API | [keras.io](https://keras.io/) |
-| torch | ≥2.0 | PyTorch | [pytorch.org](https://pytorch.org/) |
-| pytorch-lightning | ≥2.0 | Training framework | [lightning.ai](https://lightning.ai/) |
-
-#### Time Series
-| Package | Version | Description | Link |
-|:--------|:--------|:------------|:-----|
-| statsmodels | ≥0.14 | Statistical models | [statsmodels.org](https://www.statsmodels.org/) |
-| pmdarima | ≥2.0 | Auto ARIMA | [alkaline-ml.com/pmdarima](https://alkaline-ml.com/pmdarima/) |
-| neuralforecast | ≥1.7 | Neural forecasting | [nixtla.github.io/neuralforecast](https://nixtla.github.io/neuralforecast/) |
-
-#### NLP & Transformers
-| Package | Version | Description | Link |
-|:--------|:--------|:------------|:-----|
-| transformers | ≥4.36 | 🤗 Transformers | [huggingface.co/transformers](https://huggingface.co/transformers/) |
-| sentence-transformers | ≥2.2 | Sentence embeddings | [sbert.net](https://www.sbert.net/) |
-| gensim | ≥4.3 | Word2Vec, Doc2Vec | [radimrehurek.com/gensim](https://radimrehurek.com/gensim/) |
-| fasttext | ≥0.9 | FastText | [fasttext.cc](https://fasttext.cc/) |
-| nltk | ≥3.8 | NLP toolkit | [nltk.org](https://www.nltk.org/) |
-
-#### Financial LLM Fine-tuning
-| Package | Version | Description | Link |
-|:--------|:--------|:------------|:-----|
-| peft | ≥0.7 | Parameter-efficient FT | [GitHub](https://github.com/huggingface/peft) |
-| accelerate | ≥0.25 | Training acceleration | [GitHub](https://github.com/huggingface/accelerate) |
-| bitsandbytes | ≥0.42 | 8-bit optimizers | [GitHub](https://github.com/TimDettmers/bitsandbytes) |
-| datasets | ≥2.14 | 🤗 Datasets | [GitHub](https://github.com/huggingface/datasets) |
-
-</details>
-
-### Quick Install (Essential Packages)
+### Quick Install
 
 ```bash
-pip install pandas>=2.0 numpy>=1.24 matplotlib>=3.7 scikit-learn>=1.3 \
-    tensorflow>=2.15 torch>=2.0 transformers>=4.36 neuralforecast>=1.7 \
-    statsmodels>=0.14 gensim>=4.3 peft>=0.7 accelerate>=0.25
+pip install tensorflow==2.15.0 keras==3.0 torch>=2.1.0 transformers==4.35.0 \
+    neuralforecast==1.7.0 statsmodels==0.14.0 scikit-learn==1.3.0 \
+    gensim==4.3.0 pandas==2.0.0 numpy==1.24.0 matplotlib==3.7.0 seaborn==0.12.0
 ```
 
 ---
 
 ## 🖥️ Development Environment
 
-All experiments were conducted on **Google Colab Pro+** with the following specifications:
+All experiments were conducted on **Google Colab Pro+**:
 
 <div align="center">
 
@@ -487,12 +475,13 @@ All experiments were conducted on **Google Colab Pro+** with the following speci
 |:----------|:--------------|
 | ☁️ **Platform** | Google Colab Pro+ |
 | 🎮 **GPU** | NVIDIA A100 (80GB VRAM) |
-| 🧠 **RAM** | 168 GB System Memory |
-| 🐍 **Python** | 3.10+ |
+| 🧠 **RAM** | 167 GB System Memory |
+| 🐍 **Python** | 3.10 |
 | 🔥 **TensorFlow** | 2.15.0 |
 | ⚡ **PyTorch** | 2.1.0 + CUDA 12.1 |
-| 🤗 **Transformers** | 4.36.0 |
+| 🤗 **Transformers** | 4.35.0 |
 | 📈 **NeuralForecast** | 1.7.0 |
+| 🔧 **Keras** | 3.0 |
 
 </div>
 
@@ -525,23 +514,19 @@ If you use this code or find our research helpful, please cite:
 
 ### Key Papers
 
-| Paper | Authors | Venue | Year | Contribution |
-|:------|:--------|:------|:----:|:-------------|
-| [Attention Is All You Need](https://arxiv.org/abs/1706.03762) | Vaswani et al. | NeurIPS | 2017 | Transformer architecture |
-| [Autoformer](https://arxiv.org/abs/2106.13008) | Wu et al. | ICML | 2021 | Auto-correlation for time series |
-| [Informer](https://arxiv.org/abs/2012.07436) | Zhou et al. | AAAI | 2021 | ProbSparse attention (Best Paper) |
-| [FEDformer](https://arxiv.org/abs/2201.12740) | Zhou et al. | ICML | 2022 | Frequency domain Transformer |
-| [TimesNet](https://arxiv.org/abs/2210.02186) | Wu et al. | ICLR | 2023 | 2D temporal variation modeling |
-| [FinBERT](https://arxiv.org/abs/1908.10063) | Yang et al. | - | 2020 | Financial sentiment BERT |
-| [FinGPT](https://arxiv.org/abs/2306.06031) | Yang et al. | - | 2023 | Open-source financial LLM |
-| [BERT](https://arxiv.org/abs/1810.04805) | Devlin et al. | NAACL | 2019 | Pre-trained language model |
-| [Word2Vec](https://arxiv.org/abs/1301.3781) | Mikolov et al. | - | 2013 | Word embeddings |
+<div align="center">
 
-### Related Work on Financial Crisis Prediction
+| Paper | Authors | Venue | Year |
+|:------|:--------|:------|:----:|
+| [Attention Is All You Need](https://arxiv.org/abs/1706.03762) | Vaswani et al. | NeurIPS | 2017 |
+| [Autoformer](https://arxiv.org/abs/2106.13008) | Wu et al. | ICML | 2021 |
+| [Informer](https://arxiv.org/abs/2012.07436) | Zhou et al. | AAAI Best Paper | 2021 |
+| [FEDformer](https://arxiv.org/abs/2201.12740) | Zhou et al. | ICML | 2022 |
+| [TimesNet](https://arxiv.org/abs/2210.02186) | Wu et al. | ICLR | 2023 |
+| [FinBERT](https://arxiv.org/abs/1908.10063) | Yang et al. | - | 2020 |
+| [FinGPT](https://arxiv.org/abs/2306.06031) | Yang et al. | - | 2023 |
 
-- Bussière, M., & Fratzscher, M. (2006). Towards a new early warning system of financial crises.
-- Kaminsky, G., Lizondo, S., & Reinhart, C. M. (1998). Leading indicators of currency crises.
-- Lütkepohl, H. (2005). New introduction to multiple time series analysis.
+</div>
 
 ---
 
