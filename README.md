@@ -539,7 +539,7 @@ If you use this code or find our research helpful, please cite:
   department= {Electrical-Electronics and Computer Engineering},
   type      = {PhD Thesis},
   address   = {Düzce, Turkey},
-  pages     = {174},
+  pages     = {168},
   keywords  = {Financial Crisis Prediction, NLP, Time Series, Deep Learning, 
                Transformer, BIST50, Turkish Currency Crisis}
 }
